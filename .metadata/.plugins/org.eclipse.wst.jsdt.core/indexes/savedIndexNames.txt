@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+C:\Users\ckdrb\OneDrive\πŸ≈¡ »≠∏È\homeProject\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2229972827.index
+4114514053.index
+2767612314.index
+3416110638.index
+4114514053.index
+3547543315.index
+449384428.index
+2576696310.index

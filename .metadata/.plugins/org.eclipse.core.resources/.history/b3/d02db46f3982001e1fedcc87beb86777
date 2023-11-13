@@ -1,0 +1,5 @@
+package park.event;
+
+public class EventPagination {
+
+}
