@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Users\ckdrb\OneDrive\바탕 화면\tocat-jdbc-servle"/>
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\app\user1\product\21c\dbhomeXE\jdbc\lib"/>
 	<section name="JavaElementSearchActions">
 	</section>
 	<section name="BuildPathsPropertyPage">
@@ -23,5 +23,8 @@
 	<section name="completion_proposal_size">
 	</section>
 	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="ClasspathContainerSelectionPage">
+		<item key="index" value="7"/>
 	</section>
 </section>

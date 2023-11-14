@@ -10,8 +10,8 @@
         .event_form{
             padding: 10px;
             margin: 10px;
-            float: left;
-            width: 100%;
+            text-align: center;
+            width: 103%;
         }
         #event_name,#event_location{
             padding: 5px;
@@ -34,6 +34,10 @@
         .sel{
             margin: 5px;
         }
+        label{
+        margin: 10px;
+       
+        }
 </style>
 </head>
 <body>
@@ -52,7 +56,7 @@
 	 %>
 		 <button type="button" onclick="location.href='login.jsp'" style="width:60px;">로그인</button>
 		 <h>|</h>
-	    <button type="button" onclick="location.href='join.jsp'" style="width:100px;">회원가입</button>
+	    <button type="button" onclick="location.href='register.jsp'" style="width:100px;">회원가입</button>
 	  <%
     	}
 	  %>
@@ -73,7 +77,7 @@
 	
 	<h3 style="text-align:center;">행사글 작성</h3>
 	<div id="whitebox">
-	
+	<div>
 <form action="EventServlet" method="post" enctype="multipart/form-data">
 	<div class="event_form">
 	<label for="event_name">행사 제목 : </label>
@@ -94,7 +98,7 @@
 	<input type="number" id="event_price" name="event_price" required>
 	
 	<label for="event_age">연 령 : </label>
-	<input type="number" id="event_age" name="event_age" required>
+	<input type="number" id="event_age" name="event_age">
     <label for="event_img">사진 : </label>
 	<input type="file" name="event_img" id="event_img" required><br>
 	
@@ -103,7 +107,8 @@
 	
 	
 	
-	<input type="submit" value="문의 작성" class="sel">
+	<input type="submit" value="게시글 작성" class="sel">
+	</div>
 	</div>
 </form>
 <button onclick="location.href='Event_List.jsp'">돌아가기</button>

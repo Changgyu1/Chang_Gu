@@ -8,7 +8,39 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="./css/event.css">
-
+<style>
+        .event_form{
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 103%;
+        }
+        #event_name,#event_location{
+            padding: 5px;
+            margin: 5px;
+            width: 50%;
+        }
+        #event_day,#event_time{
+            padding: 5px;
+            margin: 5px;
+            width: 30%;
+        }
+        #event_price,#event_age{
+            padding: 5px;
+            margin: 5px;
+        }
+        #event_explain{
+            width: 80%;
+            height: 200px;
+        }
+        .sel{
+            margin: 5px;
+        }
+        label{
+        margin: 10px;
+       
+        }
+</style>
 </head>
 <body>
 	<% 
@@ -36,7 +68,7 @@
 	 %>
 		 <button type="button" onclick="location.href='login.jsp'" style="width:60px;">로그인</button>
 		 <h>|</h>
-	    <button type="button" onclick="location.href='join.jsp'" style="width:100px;">회원가입</button>
+	    <button type="button" onclick="location.href='register.jsp'" style="width:100px;">회원가입</button>
 	  <%
     	}
 	  %>
@@ -66,13 +98,13 @@
 	<input type="text" id="event_name" name="event_name" value="<%=eventPosting.getEvent_name() %>"  style="text-align:center;"><br>
 	
     <label for="event_location">행사 장소 : </label>
-    <input type="text" id="event_location" name="event_location" value="<%=eventPosting.getEvent_location()%>"  style="text-align:center;">
+    <input type="text" id="event_location" name="event_location" value="<%=eventPosting.getEvent_location()%>"  style="text-align:center;"><br>
 		
 	<label for="event_day"> 행사 기간 : </label>
 	<input type="text" id="event_day" name="event_day" value="<%=eventPosting.getEvent_day()%>"  style="text-align:center;">
 	
 	<label for="event_time">행사 시간 : </label>
-	<input type="text" id="event_time" name="event_time" value="<%=eventPosting.getEvent_time()%>"  style="text-align:center;">
+	<input type="text" id="event_time" name="event_time" value="<%=eventPosting.getEvent_time()%>"  style="text-align:center;"><br>
 	
 
 	
@@ -80,16 +112,16 @@
 	<input type="number" id="event_price" name="event_price" value="<%=eventPosting.getEvent_price() %>"  style="text-align:center;">
 	
 	<label for="event_age">연 령 : </label>
-	<input type="number" id="event_age" name="event_age" value="<%=eventPosting.getEvent_age()%>"  style="text-align:center;">
+	<input type="number" id="event_age" name="event_age" value="<%=eventPosting.getEvent_age()%>"  style="text-align:center;"><br>
 
 	
 	<label for="event_explain">내용 : </label> <br>
-	<input type="text" id="event_explain" name="event_explain" value="<%=eventPosting.getEvent_explain()%>" > style="text-align:center;<br>
+	<input type="text" id="event_explain" name="event_explain" value="<%=eventPosting.getEvent_explain()%>" style="text-align:center"> <br>
 	
 	
 	
 	
-	<input type="submit" value="수정하기" >
+	<input type="submit" value="수정하기" class="sel">
 	</div>
 </form>
 

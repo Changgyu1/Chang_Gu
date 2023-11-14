@@ -15,5 +15,7 @@ public class EventPaginationUtil {
 
 	}
 	
-
+	public static int paginationBlockPage(int pageBlock, int pageSize) {
+		return (int)(Math.ceil((double)pageSize/pageBlock));
+	}
 }

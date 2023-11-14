@@ -1,0 +1,35 @@
+
+
+/* 입력 필드 스타일 */
+input[type="text"],
+input[type="email"],
+ input[type="password"]{
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+li{
+		float:right;
+		margin: 6px 224px 0px 0;
+}
+
+
+div#r_search {
+    margin-top: 123px;
+}
+
+li#info{
+	list-style:none;
+	
+}
+div#recancelButton{
+	margin : 20px -600px 0 0;
+}
+
+div#reservationList{
+	margin: 20px 36px 0px 56px;
+}

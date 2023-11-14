@@ -106,6 +106,7 @@
   <!--                       headers only valid for GET requests, RFC 9110  -->
   <!--                       (which obsoletes RFC 7233) now allows partial  -->
   <!--                       puts. [true]                                   -->
+<!-- The mapping for the default servlet -->
 
     <servlet>
         <servlet-name>default</servlet-name>
@@ -120,6 +121,7 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
 
 
   <!-- The JSP page compiler and execution servlet, which is the mechanism  -->
@@ -634,7 +636,19 @@
         <url-pattern>*.shtml</url-pattern>
     </filter-mapping>
 -->
-
+<!-- 한글 깨짐 방지를 위한 필터 설정 -->
+  <filter>
+    <filter-name>SetCharEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+      <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SetCharEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <!-- ==================== Default Session Configuration ================= -->
   <!-- You can set the default session timeout (in minutes) for all newly   -->

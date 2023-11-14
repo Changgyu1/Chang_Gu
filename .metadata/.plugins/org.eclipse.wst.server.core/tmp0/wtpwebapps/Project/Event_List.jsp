@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="park.event.EventPosting"%>
@@ -16,130 +16,152 @@
 .list {
 	float: left;
 }
-.pagination{
-	text-align: center;
+
+.pagination {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	padding: 50px 0px 0px 0px;
 }
-.pagination-img{
-background-color: blue;
-		border: solid 5px;
-		width: 300px;
-		height: 300px;
+
+.pagination-img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	height: 300px;
+	padding: 0px 0px 0px 100px;
 }
-.imagecenter{
-float: left;
+
+.imagecenter {
+	float: left;
 	margin: 40px;
 	margin-right: 150px;
+}
+
+.add-event {
+	float: right;
+}
+.Pagebutton{
+	text-align: center;
+	padding: 40px;
 }
 </style>
 </head>
 <body>
 	<div class="diva">
-		<!-- ·Î°í ÀÌ¹ÌÁö -->
-		<img src="./image/·Î°í1.png" id="logo">
+		<!-- ë¡œê³  ì´ë¯¸ì§€ -->
+		<img src="./image/ë¡œê³ 1.png" id="logo">
 
-		<!--·Î±×ÀÎ ¹öÆ°-->
+		<!--ë¡œê·¸ì¸ ë²„íŠ¼-->
 		<div style="text-align: right; width: 1215px;">
 			<%
 			if (session.getAttribute("email") != null) {
 			%>
 			<button type="button" onclick="location.href='logout.jsp'"
-				style="width: 75px;">·Î±×¾Æ¿ô</button>
-			<h>|</h>
+				style="width: 75px;">ë¡œê·¸ì•„ì›ƒ</button>
+
 			<button type="button"
 				onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'"
-				style="width: 100px;">¸¶ÀÌÆäÀÌÁö</button>
+				style="width: 100px;">ë§ˆì´í˜ì´ì§€</button>
 			<%
 			} else {
 			%>
 			<button type="button" onclick="location.href='login.jsp'"
-				style="width: 60px;">·Î±×ÀÎ</button>
-			<h>|</h>
-			<button type="button" onclick="location.href='join.jsp'"
-				style="width: 100px;">È¸¿ø°¡ÀÔ</button>
+				style="width: 60px;">ë¡œê·¸ì¸</button>
+
+			<button type="button" onclick="location.href='register.jsp'"
+				style="width: 100px;">íšŒì›ê°€ì…</button>
 			<%
 			}
 			%>
-
+		<script>
+		function toggleButton(){
+			 const toggleButton = document.getElementById('toggleButton');
+			if(<%=session.getAttribute("email")%> === kiga1234@kiga1234){
+				toggleButton.style.display = 'block';
+			} else{
+				toggleButton.style.display = 'none';
+			}
+		}
+		</script>
 		</div>
 
-		<!-- ¸Ş´º¹Ù -->
+		<!-- ë©”ë‰´ë°” -->
 		<div id="buttons">
 			<ul>
-				<li onclick="location.href='review_list.jsp'">ÈÄ±â</li>
+				<li onclick="location.href='review_list.jsp'">í›„ê¸°</li>
 				<li onclick="location.href='Qna_List.jsp'">QNA</li>
-				<li onclick="location.href='reservation_search.jsp'">¿¹¾àÁ¶È¸</li>
-				<li onclick="location.href='Event_List.jsp'">Çà»çÁ¤º¸</li>
+				<li onclick="location.href='reservation_search.jsp'">ì˜ˆì•½ì¡°íšŒ</li>
+				<li onclick="location.href='Event_List.jsp'">í–‰ì‚¬ì •ë³´</li>
 			</ul>
 		</div>
 
-		<!-- °¡¿îµ¥ °¡Àå Å« ¹Ú½º -->
+		<!-- ê°€ìš´ë° ê°€ì¥ í° ë°•ìŠ¤ -->
 		<div id="background">
-			<img src="">
-			<h2>Çà»ç ÀÛ¼º</h2>
 
-			<button type="button" onclick="location.href='Event_add.jsp'">°Ô½Ã±Û
-				ÀÛ¼º</button>
-			<!-- ¾È¿¡ ±Û³Ö´Â ÇÏ¾á ¹Ú½º-->
+			<h2>í–‰ì‚¬ ì‘ì„±</h2>
+			<div class="add-event">
+			
+				<button type="button" class="add-event" id="toggleButton"
+					onclick="location.href='Event_add.jsp'">ê²Œì‹œê¸€ ì‘ì„±</button>
+			</div>
+			<!-- ì•ˆì— ê¸€ë„£ëŠ” í•˜ì–€ ë°•ìŠ¤-->
 			<div id="whitebox">
 
-				<div>
-					<table border="1">
-					<!-- ÀÌ¹ÌÁö -->
+				<table border="1">
+					<!-- ì´ë¯¸ì§€ -->
 					<%
-						int pageNumber = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
-						int pageSize = 2;
-						//int pageNumber = Integer.parseInt(request.getParameter("page"));
+					int pageNumber = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+					int pageSize = 2;
+					//int pageNumber = Integer.parseInt(request.getParameter("page"));
 
-						EventPostingDAO eventPaginationDAO = new EventPostingDAO();
-						List<EventPosting> eventPagination = eventPaginationDAO.getAllProducts(pageNumber, pageSize);
-						%>
-
+					EventPostingDAO eventPaginationDAO = new EventPostingDAO();
+					List<EventPosting> eventPagination = eventPaginationDAO.getAllProducts(pageNumber, pageSize);
+					%>
+					<div class="pagination">
 						<%
-						for(EventPosting p : eventPagination){
+						for (EventPosting p : eventPagination) {
 						%>
-						
 
-						
-						<div class="pagination">
-							<div class="imagecenter">
-								<a href="Event_Detal.jsp?event_number=<%=p.getEvent_number() %>"> <img src="<%=p.getEvent_img() %>" class="pagination-img">
-								</a>
-							</div>
+
+
+						<div class="pagination-img">
+							<a href="Event_Detal.jsp?event_number=<%=p.getEvent_number()%>">
+								<img src="<%=p.getEvent_img()%>" class="pagination-img">
+							</a>
 						</div>
-							<%
+						<%
 						}
 						%>
-					</table>
-				</div>
+					</div>
+				</table>
+
+
 			</div>
+				<!-- í˜ì´ì§€ ë„˜ê¸°ëŠ” ë²„íŠ¼-->
+	<div class="Pagebutton">
+	
+		<%
+		//1. í˜ì´ì§€ë„¤ì´ì…˜ ë§í¬ë¥¼ ìƒì„±í•´ì¤„ê²ƒì´ê³ , ë§í¬ëŠ” page ê°’ì— ë”°ë¼ì„œ ë‹¤ë¥´ê²Œ ë³´ì¼ ê²ƒ
+		int totalEventList = eventPaginationDAO.getTotalProducts(); //ì „ì²´ ì œí’ˆ ê°€ì ¸ì˜¤ê¸°
+		int totalPages = (int) Math.ceil((double) totalEventList / pageSize);
+
+		for (int i = 1; i <= totalPages; i++) {
+		%>
+		<a href="<%=request.getRequestURI()%>?page=<%=i%>"><%=i%></a>
+		<%
+		}
+		%>
+	</div>
 		</div>
 	</div>
 
-	</div>
-
-</body>
-</html>
 
 
 
-</div>
-</div>
 
-<!-- ÆäÀÌÁö ³Ñ±â´Â ¹öÆ°-->
-<div id="Pagebutton">
-	<%
-						//1. ÆäÀÌÁö³×ÀÌ¼Ç ¸µÅ©¸¦ »ı¼ºÇØÁÙ°ÍÀÌ°í, ¸µÅ©´Â page °ª¿¡ µû¶ó¼­ ´Ù¸£°Ô º¸ÀÏ °Í
-						int totalEventList = eventPaginationDAO.getTotalProducts(); //ÀüÃ¼ Á¦Ç° °¡Á®¿À±â
-						int totalPages = (int) Math.ceil((double) totalEventList / pageSize);
 
-						for (int i = 1; i <= totalPages; i++) {
-						%>
-						<a href="<%=request.getRequestURI()%>?page=<%=i%>"><%=i%></a>
-						<%
-						}
-						%>
-</div>
-</div>
 
 </body>
 </html>
