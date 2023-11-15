@@ -18,84 +18,95 @@ DROP TABLE reservation cascade CONSTRAINTS;
 DROP TABLE review cascade CONSTRAINTS;
 DROP TABLE users cascade CONSTRAINTS;
 DROP TABLE event cascade CONSTRAINTS;
-
 CREATE TABLE qna (
- qna_number number(10) NOT NULL,
- event_number number(10) NOT NULL,
- qna_title varchar2(200) NOT NULL,
- qna_content varchar2(500) NOT NULL,
- qna_password number(4) NOT NULL,
- qna_name varchar2(30) NULL,
- qna_date DATE NULL,
- qna_reply varchar2(500) NULL,
- qna_email varchar2(200) NOT NULL
+    qna_number  number(10)  NOT NULL,
+    event_number    number(10)  NOT NULL,
+    qna_title   varchar2(200)   NOT NULL,
+    qna_content varchar2(500)   NOT NULL,
+    qna_password    number(4)   NOT NULL,
+    qna_name    varchar2(30)    NULL,
+    qna_date    DATE    NULL,
+    qna_reply   varchar2(500)   NULL,
+    qna_email   varchar2(200)   NOT NULL
 );
 CREATE TABLE reservation (
- r_id number(8) NOT NULL,
- r_email varchar2(200) NOT NULL,
- r_phonenumber varchar2(15) NOT NULL,
- total number(10,2) NULL,
- person number(3) NOT NULL,
- event_number number(10) NOT NULL
+    r_id    number(8)   NOT NULL,
+    r_email varchar2(200)   NOT NULL,
+    r_phonenumber   varchar2(15)    NOT NULL,
+    total   number(10,2)    NULL,
+    person  number(3)   NOT NULL,
+    event_number    number(10)  NOT NULL
 );
 CREATE TABLE review (
- review_number number(38) NOT NULL,
- r_id number(8) NOT NULL,
- review varchar2(500) NOT NULL,
- review_title varchar2(50) NOT NULL,
- review_date Date NULL
+    review_number   number(38)  NOT NULL,
+    r_id    number(8)   NOT NULL,
+    review  varchar2(500)   NOT NULL,
+    review_title    varchar2(50)    NOT NULL,
+    review_date Date    NULL
 );
 CREATE TABLE users (
- email varchar2(200) NOT NULL,
- name varchar2(15) NOT NULL,
- phonenumber varchar2(15) NOT NULL,
- password varchar2(32) NOT NULL
- passwordcheck varchar2(32) NOT NULL
+    email   varchar2(200)   NOT NULL,
+    name    varchar2(15)    NOT NULL,
+    phonenumber varchar2(15)    NOT NULL,
+    password    varchar2(32)    NOT NULL
 );
 CREATE TABLE event (
- event_number number(10) NOT NULL,
- event_name varchar2(100) NOT NULL,
- event_day VARCHAR2(100) NOT NULL,
- event_time VARCHAR2(100) NULL,
- event_location varchar2(200) NOT NULL,
- event_price number(10,2) NULL,
- event_age number(3,0) NULL,
- event_img BLOB NULL,
- event_explain VARCHAR2(500) NULL
+    event_number    number(10)  NOT NULL,
+    event_name  varchar2(100)   NOT NULL,
+    event_day   VARCHAR2(100)   NOT NULL,
+    event_time  VARCHAR2(100)   NULL,
+    event_location  varchar2(200)   NOT NULL,
+    event_price number(10,2)    NULL,
+    event_age   number(3,0) NULL,
+    event_img   BLOB    NULL,
+    event_explain   VARCHAR2(500)   NULL
+);
+CREATE TABLE review_comment (
+    comment_number  number(10)  NOT NULL,
+    comment_content varchar(255)    NOT NULL,
+    comment_date    date    NULL,
+    comment_password    number(4)   NOT NULL,
+    review_number   number(38)  NOT NULL
+);
+CREATE TABLE qna_comment (
+    qna_comment_number  number(10)  NULL,
+    qna_number  number(10)  NOT NULL,
+    qna_comment_content varchar2(500)   NOT NULL,
+    qna_comment_date    DATE    NULL,
+    qna_comment_password    number(4)   NOT NULL
 );
 ALTER TABLE qna ADD CONSTRAINT PK_QNA PRIMARY KEY (
- qna_number,
- event_number
+    qna_number,
+    event_number
 );
 ALTER TABLE reservation ADD CONSTRAINT PK_RESERVATION PRIMARY KEY (
- r_id
+    r_id
 );
 ALTER TABLE review ADD CONSTRAINT PK_REVIEW PRIMARY KEY (
- review_number,
- r_id
+    review_number,
+    r_id
 );
 ALTER TABLE users ADD CONSTRAINT PK_USERS PRIMARY KEY (
- email
+    email
 );
 ALTER TABLE event ADD CONSTRAINT PK_EVENT PRIMARY KEY (
- event_number
+    event_number
+);
+ALTER TABLE review_comment ADD CONSTRAINT PK_REVIEW_COMMENT PRIMARY KEY (
+    comment_number
 );
 ALTER TABLE qna ADD CONSTRAINT FK_event_TO_qna_1 FOREIGN KEY (
- event_number
+    event_number
 )
 REFERENCES event (
- event_number
+    event_number
 );
 ALTER TABLE review ADD CONSTRAINT FK_reservation_TO_review_1 FOREIGN KEY (
- r_id
+    r_id
 )
 REFERENCES reservation (
- r_id
+    r_id
 );
-
-
-
-
 --예약 시퀸스
 CREATE SEQUENCE reservation_seq
        INCREMENT BY 1
