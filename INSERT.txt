@@ -1,0 +1,110 @@
+--회원가입
+insert into users values('aaa@naver.com', '홍길동', '010-1234-1234', 'aaa123!');
+insert into users values('abc@gmail.com', '미미', '010-1111-1111', 'abc123!');
+insert into users values('ur@naver.com', '김철수', '010-2222-2222', 'lll123!');
+
+
+
+
+--행사
+INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
+VALUES('해달축제', '2023-07-11 ~ 2023-07-15', '17:00 ~ 21:00', '서울대공원', 9999, 7, '귀여운해달축제~');
+
+INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
+VALUES('뭔헨 필하모익~클라스~강', '2023-11-30', '120분', '예술의전당 콘서트홀',70000 ,7, '한국을 대표하는 세계적인 지휘자 정명상~의 독일 전통 사운드 계승자라 불리는 뭔헨 필하모익이랑 함께 하는 내한공연');
+
+INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
+VALUES('임영웅의 콘서트','2023-10-27 ~ 2023-10-29', '17:00~ 21:00', '엑스코 동관', 170000, 12, '임영웅의 단독 콘서트');
+
+INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
+VALUES('이무진의 전국투어 콘서트', '2023-11-25', '18:00 ~ 21:30', '전북대학교 삼성문화회관', 500, NULL, '이무진의 전국투어 콘서트~');
+
+INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
+VALUES('벤허', '2023-09-24 ~ 2023-09-30', '150분', 'LG아트센터 서울 LG SIGNATURE 홀',200000 ,8, '뮤지컬 업계를 선도하는 EMK, 한국 창작 뮤지컬의 신화 왕용용 연출 이성순 작곡가와 함계 빚어낸 대작');
+
+INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
+VALUES('렌트','2023-11-11 ~ 2024-02-24', '화~금 7:30/ 토~일 02:00/ 월 공연 없음', 'coex 신한카드 artium', 0, 14, '뉴옥을 배경으로 젊은 예술가들의 사랑, 우정, 고뇌와 치열함 그리고 용기가 가득한 이야기');
+
+
+
+
+
+--예약
+insert into reservation ( r_email, r_phonenumber, person, event_number) values ('aaa@naver.com', '010-1234-1234', 1, 1);
+insert into reservation ( r_email, r_phonenumber, person, event_number) values ('bbb@naver.com', '010-3333-3333', 2, 1);
+insert into reservation ( r_email, r_phonenumber, person, event_number) values ('aaa@naver.com', '010-1234-1234', 2, 2);
+
+
+
+--문의
+--회원문의
+INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
+VALUES(1, '행사문의', '행사 일정 문의', 1234, 'kh', TO_DATE('2023-10-06','YYYY-MM-DD'), '행사일정은 2023-10-30입니다.', 'aaa@naver.com');
+INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
+VALUES(2, '문의', '행사 시간 문의', 1212, ' ', TO_DATE('2023-07-01','YYYY-MM-DD'), '행사시간은 3시간입니다.', 'abc@gmail.com');
+INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
+VALUES(3, '문의합니다', '행사장 내 반입물품 문의합니다', 8565, 'kkk', TO_DATE('2023-08-13','YYYY-MM-DD'), '자세한 사항은 공지사항을 참고해주세요', 'ur@naver.com');
+--비회원
+INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
+VALUES(4, '문의', '행사장 내 주차장 이용가능한가요?', 2394, 'kkkkh', TO_DATE('2023-07-10','YYYY-MM-DD'), '행사장 내 주차공간이 협소하여 인근 주차장을 이용해주세요.', 'kkk@naver.com');
+INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
+VALUES(4, '문의합니다!', '콘서트 장 내 f구역 잘 보이나요?', 9786, ' ', TO_DATE('2023-03-14','YYYY-MM-DD'), '좌석에 따라 개인차가 있음을 알려드립니다.', 'asdf@gmail.com');
+
+INSERT INTO qna_comment (qna_comment_number, qna_number, qna_comment_content, qna_comment_date, qna_comment_password) VALUES (1, 14, '문의 답글입니다.', SYSDATE, 1111);
+INSERT INTO qna_comment (qna_comment_number, qna_number, qna_comment_content, qna_comment_date, qna_comment_password) VALUES (1, 17, '문의 주신 내용 답변입니다.', SYSDATE, 1111);
+INSERT INTO qna_comment (qna_comment_number, qna_number, qna_comment_content, qna_comment_date, qna_comment_password) VALUES (1, 20, '문의 댓글입니다.', SYSDATE, 1111);
+
+
+--후기
+insert into review(r_id, review,review_title,review_date)
+values (1,'너무 즐거워요!','후기1',to_date('2023-11-02','yyyy-mm-dd'));
+insert into review(r_id, review,review_title,review_date)
+values (2,'너무 재밌어요!','후기2',to_date('2023-11-03','yyyy-mm-dd'));
+insert into review(r_id, review,review_title,review_date)
+values (3,'너무 감동적이에요!','후기3',to_date('2023-11-04','yyyy-mm-dd'));
+insert into review(r_id, review,review_title,review_date)
+values (2,'너무 신났어요!','후기4',to_date('2023-11-05','yyyy-mm-dd'));
+insert into review(r_id, review,review_title,review_date)
+values (3,'너무 힘들었어요!','후기5',to_date('2023-11-06','yyyy-mm-dd'));
+insert into review(r_id, review,review_title,review_date)
+values (3,'너무 합리적이에요!','후기6',to_date('2023-11-07','yyyy-mm-dd'));
+insert into review(r_id, review,review_title,review_date)
+values (1,'너무 힐링됐어요!','후기7',to_date('2023-11-08','yyyy-mm-dd'));
+insert into review(r_id, review,review_title,review_date)
+values (2,'너무 멋진 쇼였어요!','후기8',to_date('2023-11-09','yyyy-mm-dd'));
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('우와 진짜 재밌어요!',1,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('화장실 물 내려 가는 소리는 괜찮나요? 제가 화장실 물내리는 소리 공포증이 있어서.....다섯살때  화장실 물내리는 소리를 들고 기절한 트라우마가 있거든요',1,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('저두 데려가주세요...........',1,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('이거 정말 재밌어요!',2,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('앞자리 가고 싶은데........ 뒷자리는 많이 안들리나요? 못들을 정도인가요?',2,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('음향 소리가 괜찮나요? 화장실은 깨끗한가요?',2,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('너무 좋은 후기 감사드립니다. 덕분에 예매하는데 도움이 되었어요 다음번에도 좋은 후기 부탁드립니다~~',3,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('재미없어요',3,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('도움안돼요',4,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('역~시 최고의선배님~',4,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('우와 진짜 재밌어요!',5,0000,sysdate);
+
+insert into review_comment(comment_content,review_number,comment_password,comment_date) 
+values('리뷰가 너무 성의없네요',6,0000,sysdate);
