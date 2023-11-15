@@ -28,10 +28,10 @@ table, td, th, tbody, thead {
 }
 
 td, th {
-    text-align: left;
-    padding: 15px;
-    font-size: 18px;
-    margin: 0px 0px 0px 0px;
+	text-align: left;
+	padding: 15px;
+	font-size: 18px;
+	margin: 0px 0px 0px 0px;
 }
 
 .sese3 {
@@ -39,33 +39,42 @@ td, th {
 }
 
 .reserButton {
-    float: left;
-    border: none;
-    background-color: moccasin;
-    width: 140px;
-    height: 40px;
-    text-align: center;
-        margin: 0px -4px 8px 29px;
+	float: left;
+	border: none;
+	background-color: moccasin;
+	width: 140px;
+	height: 40px;
+	text-align: center;
+	margin: 0px -4px 8px 29px;
 }
-.pagExplain{
 
+.pagExplain {
+	
 }
- details{margin-bottom:10px;}
-  details summary{    padding: 0 10px;
-    background: antiquewhite;
-    color: darkgray;
-    height: 35px;
-    line-height: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 97%;
-    text-align: center;}
-    details div{
-    text-align: center;
-    }
-    .buttontype{
-    margin: 20px 0px 0px 0px;
-    }
+
+details {
+	margin-bottom: 10px;
+}
+
+details summary {
+	padding: 0 10px;
+	background: antiquewhite;
+	color: darkgray;
+	height: 35px;
+	line-height: 35px;
+	font-weight: bold;
+	cursor: pointer;
+	width: 97%;
+	text-align: center;
+}
+
+details div {
+	text-align: center;
+}
+
+.buttontype {
+	margin: 20px 0px 0px 0px;
+}
 </style>
 
 </head>
@@ -82,33 +91,30 @@ td, th {
 	%>
 	<div class="diva">
 		<!-- 로고 이미지 -->
-		<img src="./image/로고1.png" id="logo">
+		<img src="./image/로고1.png" id="logo"
+			onclick="location.href='home.jsp'">
 
 		<!--로그인 버튼-->
 		<div style="text-align: right; width: 1215px;">
+
 			<%
+			//로그인시 후기 보기만 가능
 			if (session.getAttribute("email") != null) {
 			%>
-			<button type="button" onclick="location.href='logout.jsp'"
-				style="width: 75px;">로그아웃</button>
-			<h>|</h>
-			<button type="button"
-				onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'"
-				style="width: 100px;">마이페이지</button>
+			<input type="submit" value="후기보기"
+				onclick="location.href='review_searchlist.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
+			<input type="submit" value="후기 작성하기"
+				onclick="location.href='review_write.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
 			<%
+			//비로그인 시 후기 작성,후기 보기 가능
 			} else {
 			%>
-			<button type="button" onclick="location.href='login.jsp'"
-				style="width: 60px;">로그인</button>
-			<h>|</h>
-			<button type="button" onclick="location.href='register.jsp'"
-				style="width: 100px;">회원가입</button>
+			<input type="submit" value="후기보기"
+				onclick="location.href='review_searchlist.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
+
 			<%
 			}
 			%>
-			
-			
-
 		</div>
 
 		<!-- 메뉴바 -->
@@ -169,34 +175,40 @@ td, th {
 					</tbody>
 				</table>
 				<div class="buttontype">
-				
-					<input type="button" class="reserButton" value="예약하기" onclick="location.href='reservation.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
-					
-					<input type="submit" value="후기보기" class="reserButton" onclick="location.href='choose_list.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
-					
-					<input type="submit" value="목록가기" class="reserButton" onclick="location.href='Event_List.jsp'"> 
+
+					<input type="button" class="reserButton" value="예약하기"
+						onclick="location.href='reservation.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
+
+					<input type="submit" value="후기보기" class="reserButton"
+						onclick="location.href='choose_list.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
+
+					<input type="submit" value="목록가기" class="reserButton"
+						onclick="location.href='Event_List.jsp'">
 					<%
-					if (session.getAttribute("email").equals("kiga1234@kiga1234")) {
+					if (session.getAttribute("email") != null && session.getAttribute("email").equals("kiga1234@kiga1234")) {
 					%>
-					<input type="submit" value="수정하기" class="reserButton" onclick="location.href='Event_Update.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
-			
-					<input type="submit" value="삭제하기" class="reserButton" onclick="location.href='Event_delete_success.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
-				<%} %>
+					<input type="submit" value="수정하기" class="reserButton"
+						onclick="location.href='Event_Update.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
 
+					<input type="submit" value="삭제하기" class="reserButton"
+						onclick="location.href='Event_delete_success.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
+					<%
+					}
+					%>
+
+				</div>
 			</div>
+
+
+			<!-- 페이지 넘기는 버튼-->
+
+		</div>
+
+		<details class="pagExplain">
+			<summary>자세히 보기</summary>
+			<div>
+				<%=eventPosting.getEvent_explain()%>
 			</div>
-
-
-	<!-- 페이지 넘기는 버튼-->
-
-	</div>
-
-<details class="pagExplain">
-    <summary>자세히 보기</summary>
-    <div>
-	<%=eventPosting.getEvent_explain() %>
-    </div>
-</details>
-
+		</details>
 </body>
 </html>

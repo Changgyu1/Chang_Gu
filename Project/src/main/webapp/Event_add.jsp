@@ -42,7 +42,7 @@
 </head>
 <body>
 <div class="my-div">
-<img src="./image/로고1.png" id="logo">
+<img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
  <!--로그인 버튼-->
     <div style="text-align: right; width: 1215px;">
     <%

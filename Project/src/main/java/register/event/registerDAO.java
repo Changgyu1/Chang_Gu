@@ -25,7 +25,7 @@ public class registerDAO {
 
 	public String getUser(String email) {
 		Connection conn;
-	
+	String email2 = null;
 		try {
 			conn = DriverManager.getConnection(jdbcURL, username, password);
 			String sql = "SELECT email FROM users where email = ? ";
@@ -34,15 +34,18 @@ public class registerDAO {
 			ResultSet result = ps.executeQuery();
 			
 			if(result.next()) {
-				email = result.getString("email");
+				email2 = result.getString("email");
+				return email2;
+			}else {
+				return email2;
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return email;
+		return email2;
 	}
+
 	
 	public registerDTO getUserInfo(String email) {
 		registerDTO RegisterDTO = null;

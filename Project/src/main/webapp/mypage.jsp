@@ -18,7 +18,7 @@
 <body>
 
     <!-- 이미지 로고 -->
-   <img src="./image/로고1.png" id="logo">
+   <img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
    
     
     <!--로그인 버튼-->

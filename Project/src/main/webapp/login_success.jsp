@@ -19,7 +19,7 @@
 <body>
 <div id="wrapper">
     <!--로고이미지-->
-    <img src="./image/로고1.png" id="logo">
+    <img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
 
     <!--로그인 버튼-->
     <div style="text-align: right; width: 1215px;">
