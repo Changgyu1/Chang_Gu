@@ -13,20 +13,24 @@ DROP SEQUENCE QNA_SEQ;
 DROP TRIGGER QNA_TRIGGER;
 DROP SEQUENCE REVIEW_SEQ;
 DROP TRIGGER REVIEW_TRIGGER;
+DROP SEQUENCE REVIEW_COMMENT_SEQ;
+DROP SEQUENCE QNA_COMMENT_SEQ;
 DROP table qna cascade CONSTRAINTS;
 DROP TABLE reservation cascade CONSTRAINTS;
 DROP TABLE review cascade CONSTRAINTS;
 DROP TABLE users cascade CONSTRAINTS;
 DROP TABLE event cascade CONSTRAINTS;
+DROP TABLE qna_comment cascade CONSTRAINTS;
+DROP TABLE review_comment cascade CONSTRAINTS;
+
 CREATE TABLE qna (
     qna_number  number(10)  NOT NULL,
-    event_number    number(10)  NOT NULL,
+    event_number    number(10)  NULL,
     qna_title   varchar2(200)   NOT NULL,
     qna_content varchar2(500)   NOT NULL,
     qna_password    number(4)   NOT NULL,
     qna_name    varchar2(30)    NULL,
     qna_date    DATE    NULL,
-    qna_reply   varchar2(500)   NULL,
     qna_email   varchar2(200)   NOT NULL
 );
 CREATE TABLE reservation (
@@ -39,10 +43,10 @@ CREATE TABLE reservation (
 );
 CREATE TABLE review (
     review_number   number(38)  NOT NULL,
-    r_id    number(8)   NOT NULL,
     review  varchar2(500)   NOT NULL,
     review_title    varchar2(50)    NOT NULL,
-    review_date Date    NULL
+    review_date Date    NULL,
+    event_number    number(10)  NOT NULL
 );
 CREATE TABLE users (
     email   varchar2(200)   NOT NULL,
@@ -69,7 +73,7 @@ CREATE TABLE review_comment (
     review_number   number(38)  NOT NULL
 );
 CREATE TABLE qna_comment (
-    qna_comment_number  number(10)  NULL,
+    qna_comment_number  number(10)  NOT NULL,
     qna_number  number(10)  NOT NULL,
     qna_comment_content varchar2(500)   NOT NULL,
     qna_comment_date    DATE    NULL,
@@ -83,8 +87,7 @@ ALTER TABLE reservation ADD CONSTRAINT PK_RESERVATION PRIMARY KEY (
     r_id
 );
 ALTER TABLE review ADD CONSTRAINT PK_REVIEW PRIMARY KEY (
-    review_number,
-    r_id
+    review_number
 );
 ALTER TABLE users ADD CONSTRAINT PK_USERS PRIMARY KEY (
     email
@@ -95,17 +98,14 @@ ALTER TABLE event ADD CONSTRAINT PK_EVENT PRIMARY KEY (
 ALTER TABLE review_comment ADD CONSTRAINT PK_REVIEW_COMMENT PRIMARY KEY (
     comment_number
 );
+ALTER TABLE qna_comment ADD CONSTRAINT PK_QNA_COMMENT PRIMARY KEY (
+    qna_comment_number
+);
 ALTER TABLE qna ADD CONSTRAINT FK_event_TO_qna_1 FOREIGN KEY (
     event_number
 )
 REFERENCES event (
     event_number
-);
-ALTER TABLE review ADD CONSTRAINT FK_reservation_TO_review_1 FOREIGN KEY (
-    r_id
-)
-REFERENCES reservation (
-    r_id
 );
 --예약 시퀸스
 CREATE SEQUENCE reservation_seq
@@ -179,3 +179,39 @@ create or replace NONEDITIONABLE TRIGGER qna_trigger
         FROM dual;
     END;
     /
+--후기 댓글 시퀀스
+CREATE SEQUENCE review_comment_seq
+       INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       NOCYCLE
+       NOCACHE
+       NOORDER;
+     /    
+create or replace NONEDITIONABLE TRIGGER review_comment_trigger
+    BEFORE INSERT ON review_comment
+    FOR EACH ROW
+    BEGIN
+        SELECT  review_comment_seq.NEXTVAL
+        INTO : NEW.comment_number
+        FROM dual;
+    END;
+/
+--문의 댓글 시퀀스, 트리거
+CREATE SEQUENCE qna_comment_seq
+       INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       NOCYCLE
+       NOCACHE
+       NOORDER;
+     /   
+create or replace NONEDITIONABLE TRIGGER qna_comment_trigger
+    BEFORE INSERT ON qna_comment
+    FOR EACH ROW
+    BEGIN
+        SELECT  qna_comment_seq.NEXTVAL
+        INTO : NEW.qna_comment_number
+        FROM dual;
+    END;
+/

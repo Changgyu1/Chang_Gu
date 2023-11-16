@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\user1\Desktop\Chang_Gu-master\Chang_Gu-master\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3295369850.index
-\Project\src\main\java
-C:\Users\ckdrb\OneDrive\πŸ≈¡ »≠∏È\homeProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4114514053.index
-\Project\src\main\java
-C:\Users\user1\Desktop\Chang_Gu-master\Chang_Gu-master\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4114514053.index
-\Project\src\main\java

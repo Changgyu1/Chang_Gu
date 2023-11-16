@@ -2,28 +2,29 @@
 insert into users values('aaa@naver.com', '홍길동', '010-1234-1234', 'aaa123!');
 insert into users values('abc@gmail.com', '미미', '010-1111-1111', 'abc123!');
 insert into users values('ur@naver.com', '김철수', '010-2222-2222', 'lll123!');
+insert into users values'kiga1234@kiga1234', '관리자', '00000', 'kiga1234');
 
 
 
 
 --행사
 INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
-VALUES('해달축제', '2023-07-11 ~ 2023-07-15', '17:00 ~ 21:00', '서울대공원', 9999, 7, '귀여운해달축제~');
+VALUES('[일산] AGF 2023','2023.12.02 ~2023.12.03', ' 토~일 09:30~18:00', '경기도 고양시 일산서구 킨텍스로 217-60(대화동) 제1전시장 3,4,5홀', 27000, 12, '한국 최초&최대 공식 애니메이션x게임 페스티벌');
 
 INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
-VALUES('뭔헨 필하모익~클라스~강', '2023-11-30', '120분', '예술의전당 콘서트홀',70000 ,7, '한국을 대표하는 세계적인 지휘자 정명상~의 독일 전통 사운드 계승자라 불리는 뭔헨 필하모익이랑 함께 하는 내한공연');
+VALUES('제22회 서울카페쇼 2023','2023.11.08 ~2023.11.11', ' 11.8(수)-10(금) : 10:00~18:00 / 11.11(토) : 10:00~16:00', '코엑스 전관', 27000, 9, '커피에 관한 좋은 생각 모든 가능성과 기회가 열리는 곳');
 
 INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
-VALUES('임영웅의 콘서트','2023-10-27 ~ 2023-10-29', '17:00~ 21:00', '엑스코 동관', 170000, 12, '임영웅의 단독 콘서트');
+VALUES('MSCHF: NOTHING IS SACRED','2023.11.10 ~2024.03.31', '화,수,목,일 11:00 ~ 19:00 / 금,토 11:00 ~ 20:00', '대림미술관', 17000,'7', '화제와 논란의 중심, 이들에게 더 이상 신성시될 것은 없습니다.');
 
 INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
-VALUES('이무진의 전국투어 콘서트', '2023-11-25', '18:00 ~ 21:30', '전북대학교 삼성문화회관', 500, NULL, '이무진의 전국투어 콘서트~');
+VALUES('이경준 사진전: 원 스텝 어웨이','2023.10.27 ~2024.03.31', '오전 10시 ~ 오후 7시(입장 및 매표 마감 오후 6시)', '그라운드시소 센트럴', 15000,'7', '뉴욕기반의 포토그래퍼 이경준의 렌즈에 비친 거대한 도심 속 패턴을 조명합니다.');
 
 INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
-VALUES('벤허', '2023-09-24 ~ 2023-09-30', '150분', 'LG아트센터 서울 LG SIGNATURE 홀',200000 ,8, '뮤지컬 업계를 선도하는 EMK, 한국 창작 뮤지컬의 신화 왕용용 연출 이성순 작곡가와 함계 빚어낸 대작');
+VALUES('오스틴 리: 패싱타임','2023.09.26 ~2023.12.31', '오전 10:30 - 오후 07:00', '롯데뮤지엄', 20000,'', '동시대 시각예술의 새로운 장르! 아티스트 오스틴 리 기획전');
 
 INSERT INTO event ( event_name, event_day, event_time, event_location, event_price, event_age, event_explain)
-VALUES('렌트','2023-11-11 ~ 2024-02-24', '화~금 7:30/ 토~일 02:00/ 월 공연 없음', 'coex 신한카드 artium', 0, 14, '뉴옥을 배경으로 젊은 예술가들의 사랑, 우정, 고뇌와 치열함 그리고 용기가 가득한 이야기');
+VALUES('럭스:시적해상도','2023.09.05 ~2023.12.31', '월요일 ~ 일요일 10:00~20:00', '동대문디자인플라자(DDP) 뮤지엄 제 2관', 20000,'7', '영국 런던에서 성공적으로 개최된 대규모 미디어 아트 전시 드디어 서울에 도착!');
 
 
 
@@ -37,42 +38,51 @@ insert into reservation ( r_email, r_phonenumber, person, event_number) values (
 
 
 --문의
---회원문의
-INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
-VALUES(1, '행사문의', '행사 일정 문의', 1234, 'kh', TO_DATE('2023-10-06','YYYY-MM-DD'), '행사일정은 2023-10-30입니다.', 'aaa@naver.com');
-INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
-VALUES(2, '문의', '행사 시간 문의', 1212, ' ', TO_DATE('2023-07-01','YYYY-MM-DD'), '행사시간은 3시간입니다.', 'abc@gmail.com');
-INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
-VALUES(3, '문의합니다', '행사장 내 반입물품 문의합니다', 8565, 'kkk', TO_DATE('2023-08-13','YYYY-MM-DD'), '자세한 사항은 공지사항을 참고해주세요', 'ur@naver.com');
---비회원
-INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
-VALUES(4, '문의', '행사장 내 주차장 이용가능한가요?', 2394, 'kkkkh', TO_DATE('2023-07-10','YYYY-MM-DD'), '행사장 내 주차공간이 협소하여 인근 주차장을 이용해주세요.', 'kkk@naver.com');
-INSERT INTO qna(event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_reply, qna_email) 
-VALUES(4, '문의합니다!', '콘서트 장 내 f구역 잘 보이나요?', 9786, ' ', TO_DATE('2023-03-14','YYYY-MM-DD'), '좌석에 따라 개인차가 있음을 알려드립니다.', 'asdf@gmail.com');
+insert into qna(qna_number, event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_email) 
+values (1, 1, '카페쇼 문의', '카페쇼 관람 문의합니다', 1111, 'kh', sysdate, 'kh@kh.com');
+insert into qna(qna_number, event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_email) 
+values (2, 2, '문의합니다', '주차 문의합니다', 1111, 'aaa', sysdate, 'aaa@kh.com');
+insert into qna(qna_number, event_number, qna_title, qna_content, qna_password, qna_name, qna_date, qna_email) 
+values (3, 3, '환불 문의', ' 관람일자 지났는데 환불가능한가요?', 1111, 'kkk', sysdate, 'kkk@naver.com');
 
+
+-- 문의 댓글
 INSERT INTO qna_comment (qna_comment_number, qna_number, qna_comment_content, qna_comment_date, qna_comment_password) VALUES (1, 14, '문의 답글입니다.', SYSDATE, 1111);
 INSERT INTO qna_comment (qna_comment_number, qna_number, qna_comment_content, qna_comment_date, qna_comment_password) VALUES (1, 17, '문의 주신 내용 답변입니다.', SYSDATE, 1111);
 INSERT INTO qna_comment (qna_comment_number, qna_number, qna_comment_content, qna_comment_date, qna_comment_password) VALUES (1, 20, '문의 댓글입니다.', SYSDATE, 1111);
 
 
 --후기
-insert into review(r_id, review,review_title,review_date)
-values (1,'너무 즐거워요!','후기1',to_date('2023-11-02','yyyy-mm-dd'));
-insert into review(r_id, review,review_title,review_date)
-values (2,'너무 재밌어요!','후기2',to_date('2023-11-03','yyyy-mm-dd'));
-insert into review(r_id, review,review_title,review_date)
-values (3,'너무 감동적이에요!','후기3',to_date('2023-11-04','yyyy-mm-dd'));
-insert into review(r_id, review,review_title,review_date)
-values (2,'너무 신났어요!','후기4',to_date('2023-11-05','yyyy-mm-dd'));
-insert into review(r_id, review,review_title,review_date)
-values (3,'너무 힘들었어요!','후기5',to_date('2023-11-06','yyyy-mm-dd'));
-insert into review(r_id, review,review_title,review_date)
-values (3,'너무 합리적이에요!','후기6',to_date('2023-11-07','yyyy-mm-dd'));
-insert into review(r_id, review,review_title,review_date)
-values (1,'너무 힐링됐어요!','후기7',to_date('2023-11-08','yyyy-mm-dd'));
-insert into review(r_id, review,review_title,review_date)
-values (2,'너무 멋진 쇼였어요!','후기8',to_date('2023-11-09','yyyy-mm-dd'));
+insert into review (review,review_title,event_number,review_date) 
+values('최고의 카페들을 경험하고 맛볼수 있어서 유익했던 시간이었네요~','다양한 카페와 이색적인 체험',9,sysdate);
 
+insert into review (review,review_title,event_number,review_date) 
+values('뮌헨 필하모닉 콘서트 4회차 다녀왔습니다 소소한 간식거리와 담요를 제공해주셔서 관람하는 내내 편안한 마음으로 관람에만 집중 할 수 있어 너무 좋았습니다.','뮌헨필하모닉 콘서트, 4일차 다녀오다',2,sysdate);
+
+insert into review (review,review_title,event_number,review_date) 
+values('드디어 다녀왔습니다...! 너무 감동적이어서 눈물만 주르륵 흘리다 왔네요 다들 예매 안하고 뭐하세요!!!','뮌헨필하모닉콘서트 !!',2,sysdate);
+
+insert into review (review,review_title,event_number,review_date) 
+values('영웅이 얼굴 봄에 감사했던 하루...딸내미가 잡아준 티켓으로 겨우 다녀왔네요~ ㅎㅎ 온동네방네 자랑하고 다녔어요 다들 티켓팅 성공기원~!','사랑해요 임영웅 Thanks to 영웅!',3,sysdate);
+
+
+insert into review (review,review_title,event_number,review_date) 
+values('겜덕은 도저히 빠질수 없는 행사네요........게임  r 좋아하시면 무조건 가서 체험하고 오세요 힐링 제대로 하고 올 수 있습니다 평일에 가면 사람도 별로 없어서 즐기다 올 수 있어용','게임 r 좋아하시면 꼭 가보세요!',8,sysdate);
+
+
+insert into review (review,review_title,event_number,review_date) 
+values('돈이 전혀 아깝지 않은 공연..? 즐거워요 즐거워 매년 보러오게 공연 자주 열어주세요 내년에도요...!','감동의 하모니',5,sysdate);
+
+insert into review (review,review_title,event_number,review_date) 
+values('재밌어서 또 보러 올 것 같아요 다음에 또 보러 올게요~^^ 좋은 공연 감사합니다','재밌어요',6,sysdate);
+
+insert into review (review,review_title,event_number,review_date) 
+values('평소에도 카페 가는 걸 엄청 좋아하는데 요즘 시간이 없어서 예전처럼 카페 투어 잘 못다녔어서 이번 기회에 제대로 카페 투어 즐기고 왔습니다 ㅎㅎ 다들 시간내서 가는거 추천드려용 커피 좋아하셔도 추천 안좋아하셔도 추천 ㅎㅎ','카페쇼 너무 재밌었어요!!!',9,sysdate);
+
+insert into review (review,review_title,event_number,review_date) 
+values('와~최고의 축제님 축제를 뒤집어 놓으셨다~ 이런 거 요즘 잘 안하는 컨셉인데~ 와 역시 최고의 축제님~','다와~ 최고의 축제님',1,sysdate);
+
+-- 후기 댓글
 insert into review_comment(comment_content,review_number,comment_password,comment_date) 
 values('우와 진짜 재밌어요!',1,0000,sysdate);
 

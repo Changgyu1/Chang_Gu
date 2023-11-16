@@ -1,0 +1,222 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+    *{
+    font-family: 'NanumSquareNeo-Variable';
+    }
+    
+     body{
+ 	   	 position: absolute;
+         padding: 20px;
+         top: 50%;
+         left: 50%; 
+         transform: translate(-50%, -50%);
+    }
+      
+    
+    #logo{
+        width:300px;
+        margin-left:350px;
+        margin-bottom:-65px;
+        margin-top:50px;
+    }
+    
+      #logo-a{
+        width:300px;
+        margin-left:350px;
+        margin-bottom:-60px;
+        margin-top:50px;
+    }
+    
+        
+    #searchbox{
+     margin-right:100px;
+        }
+    
+    
+    #buttons{
+        background:rgba(150, 230, 248, 0.295);
+        height: 25px;
+        width: 1200px;
+        box-shadow: 0px -10px 0px rgba(249, 220, 201, 0.575);
+        margin-top: 25px;
+        
+    }
+    
+    button{
+        border:none;
+        background: none;
+        margin: 3px;
+        font-size: 16px;
+        width: 70px;
+        height: 20px;
+        
+    }
+    
+    
+	ul{
+		list-style-type: none;
+	}
+	
+	li{
+		list-style-type: none;
+		float: left;
+		width: 25%;
+
+	}
+	
+    
+    #background{
+        background-color:rgba(249, 220, 201, 0.326);
+        width: 1000px;
+        height: 650px;
+        margin-top: 10px;
+        box-shadow: 0px 2px 3px rgb(161, 160, 159);
+        padding-top:10px;
+        margin-right:auto;
+        margin-left:auto;
+        
+    }
+    
+
+    #whitebox{
+    
+    	padding-top:20px;
+    	max-width: 900px;
+        height: 500px;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: #ffffff;
+        text-align:center;
+        box-shadow: 0px 1px 3px rgb(161, 160, 159);
+        margin-top : 20px;
+           
+    }
+    
+    
+    #qna{
+    margin:10px;
+    width:700px;
+    height:250px;
+    
+    }
+    
+    #qna_title{
+    margin:10px;
+    width:700px;
+    height:30px;
+    
+    }
+    
+    #qna_content{
+    margin:10px;
+    width:700px;
+    height:250px;
+    }
+    
+    #qna_name{
+    margin:10px;
+    width:110px;
+    height:25;
+    }
+    
+    #qna_password{
+    margin:10px;
+    width:110px;
+    height:25px;
+    }
+    
+    #qna_email{
+    margin:10px;
+    width:110px;
+    height:25px;
+    }
+    
+    #event_number{
+    margin:10px;
+    width:110px;
+    height:25px;
+    }
+    
+
+    h2{
+    font-family: 'NanumSquareNeo-Variable';
+ 	margin-top:0px;
+    text-align: center;
+    }
+    
+    
+    #list{
+         border : none;
+         background-color:rgba(161, 161, 161, 0.377);
+         width:800px;
+         margin-right:auto;
+         margin-left:auto;
+         height: 40px;
+         margin-top: 30px;
+        }
+
+	.commentBox{
+		background-color: none;
+		width: 900px;
+	  	margin-right: auto;
+        margin-left:auto;
+		
+		}
+		
+	.commentScrollBox{
+		width:900px;
+		max-height: 300px;
+	}
+		
+		#commentFormbox{
+		float: left;
+		margin-top: -27px;
+		margin-left: 110px;
+		
+		}
+
+		#commentdeleteButton{
+			float:right; 
+			margin-right:20px;
+			
+		}
+		
+		#commnetlist{
+		 border : none;
+         background-color:rgba(161, 161, 161, 0.377);
+         width:880px;
+         margin-right:auto;
+         margin-left:auto;
+         height: 40px;
+
+		}
+		
+		.qnadeleteBox{
+	    margin-left: 310px;
+		}
+		
+		
+		table{
+		width:800px;
+		}
+
+        
+        #textbox{
+        
+        margin-right:100px;
+        }
+        
+        .test{
+        margin-top:10px;
+        text-align: center;
+        }
+        
+        .test_list{
+        text-align: center;
+        }
+  
