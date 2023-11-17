@@ -136,15 +136,20 @@
 /* �Է� �ʵ� ��Ÿ�� */
 input[type="text"],
 input[type="email"],
- input[type="password"]
-  input[type="submit"]{
+ input[type="password"]{
     width: 30%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
+input[type="submit"]{
+	width: 100px;
+	    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 ul{
 		list-style:none;
 	}

@@ -13,18 +13,27 @@
 
 <link rel="stylesheet" href="./css/event.css">
 <style>
+body{
+   position: absolute;
+    paddi: ;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    left: 50%;
+    transform: translate(-50%, -54%);
+}
 .list {
 	float: left;
 }
 
 .pagination {
     width: 100%;
-    display: flex;
+    
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
-    margin: 196px -43px 0px 133px;
+    margin: 152px 0px 0px 128px;
 }
 
 .pagination-img {
@@ -34,11 +43,10 @@
     padding: 0px 100px 0px 100px;
 }
 .pagination-ismg{
-	float:left;
-    margin: 0px 0px 0px -10px;
-    
+    float: left;
+    margin: 0px 0px 100px -10px;
     width: 500px;
-    height: 450px;
+    height: 300px;
 }
 .imagecenter {
 	float: left;
@@ -50,12 +58,15 @@
 	float: right;
 }
 .Pagebutton{
-	text-align: center;
-	padding: 40px;
-	    margin: 369px 0px 01px 0px;
+text-align: center;
+    position: relative;
+    margin: 350px 0px 0px 0px;
+}
 }
 .event_name_List{
 	float:left;
+	    height: 300px;
+    margin: 0px 0px 150px 0px;
 }
 #whitebox2{
 
@@ -68,6 +79,17 @@ margin: 0px 0px 0px 143px;
     color: inherit;
 
 }
+
+    #toggleButton {
+        display: none; /* 초기에는 버튼을 감추기 */
+            display: none;
+    width: 100px;
+    box-sizing: border-box;
+    border: solid 0px;
+    /* border: none; */
+    background-color: rgba(249, 220, 201, 0.326);
+    }
+
 </style>
 </head>
 <body>
@@ -76,37 +98,29 @@ margin: 0px 0px 0px 143px;
 		<img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
 
 		<!--로그인 버튼-->
-		<div style="text-align: right; width: 1215px;">
-			<%
-			if (session.getAttribute("email") != null) {
-			%>
-			<button type="button" onclick="location.href='logout.jsp'"
-				style="width: 75px;">로그아웃</button>
+	 <div style="text-align: right; width: 1215px;">
+    <%
+    if(session.getAttribute("email")!=null){
+    %>
+	 	<button type="button" onclick="location.href='logout.jsp'" style="background:none;border:none;width:75px;">로그아웃</button>
+	 	 <h>|</h>
+	    <button type="button" onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'" style="background:none;border:none;width:100px;">마이페이지</button>
+	 <%
+	 }else{
+	 %>
+		 <button type="button" onclick="location.href='login.jsp'" style="background:none;border:none;width:60px;">로그인</button>
+		 <h>|</h>
+	    <button type="button" onclick="location.href='join.jsp'" style="background:none;border:none;width:100px;">회원가입</button>
+	  <%
+	 }
+	  %>
 
-			<button type="button"
-				onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'"
-				style="width: 100px;">마이페이지</button>
-			<%
-			} else {
-			%>
-			<button type="button" onclick="location.href='login.jsp'"
-				style="width: 60px;">로그인</button>
-
-			<button type="button" onclick="location.href='register.jsp'"
-				style="width: 100px;">회원가입</button>
-			<%
-			}
-			%>
+		
 		<script>
-		function toggleButton(){
-			 const toggleButton = document.getElementById('toggleButton');
-			if(<%=session.getAttribute("email")%> === kiga1234@kiga1234){
-				toggleButton.style.display = 'block';
-			} else{
-				toggleButton.style.display = 'none';
-			}
-		}
-		</script>
+    // 가상으로 사용자가 로그인되었다고 가정
+    // 실제 상황에서는 이를 세션 로직으로 대체해야 합니다.
+
+</script>
 		</div>
 
 		<!-- 메뉴바 -->
@@ -123,10 +137,38 @@ margin: 0px 0px 0px 143px;
 		<div id="background">
 
 			<h2>행사 작성</h2>
-			<div class="add-event">
-			
-				<button type="button" class="add-event" id="toggleButton"
-					onclick="location.href='Event_add.jsp'">게시글 작성</button>
+			<div class="add-event">  
+
+	 <%
+	String userEmail = (String)session.getAttribute("email");
+	if (!"kiga1234@kiga1234".equals(userEmail)) {
+%>
+		<input type="hidden" class="add-event" id="toggleButton"
+			onclick="location.href='Event_add.jsp'" value="게시글 작성">
+<%
+	} else {
+%>
+		<input type="button" class="add-event" id="toggleButton"
+			onclick="location.href='Event_add.jsp'" value="게시글 작성">
+<%
+	}
+%>
+	  
+	  
+	  <script>
+    // 페이지 로드 시 실행되는 JavaScript 코드
+    document.addEventListener("DOMContentLoaded", function() {
+        const toggleButton = document.getElementById('toggleButton');
+        const userEmail = '<%=session.getAttribute("email")%>';
+
+        if (userEmail === 'kiga1234@kiga1234') {
+            toggleButton.style.display = 'block';
+        } else {
+            toggleButton.style.display = 'none';
+        }
+    });
+</script>
+
 			</div>
 			<!-- 안에 글넣는 하얀 박스-->
 			<div id="whitebox2">
@@ -145,30 +187,25 @@ margin: 0px 0px 0px 143px;
 						<%
 						for (EventPosting p : eventPagination) {
 						%>
-
-
-<div class="event_name_List">
 						<div class="pagination-ismg">
 							<a href="Event_Detal.jsp?event_number=<%=p.getEvent_number()%>">
 								<img src="<%=p.getEvent_img()%>" class="pagination-img">
 							</a> <br>
 							<a href="Event_Detal.jsp?event_number=<%=p.getEvent_number()%>" class="nameEv" ><%=p.getEvent_name() %></a>
 							</div>
-							
-							
-		
 						<%
 						}
 						%>
+					
 					</div>
-					</div>
-				</table>
+			
 
 
-			</div>
+			
+		
 				<!-- 페이지 넘기는 버튼-->
-	<div class="Pagebutton">
 	
+	<div class="Pagebutton">
 		<%
 		//1. 페이지네이션 링크를 생성해줄것이고, 링크는 page 값에 따라서 다르게 보일 것
 		int totalEventList = eventPaginationDAO.getTotalProducts(); //전체 제품 가져오기
@@ -176,11 +213,13 @@ margin: 0px 0px 0px 143px;
 
 		for (int i = 1; i <= totalPages; i++) {
 		%>
+		
 		<a href="<%=request.getRequestURI()%>?page=<%=i%>"><%=i%></a>
+	
 		<%
 		}
 		%>
-
+	</div>
 	</div>
 
 

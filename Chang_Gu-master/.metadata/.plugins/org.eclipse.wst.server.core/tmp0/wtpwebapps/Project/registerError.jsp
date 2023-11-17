@@ -9,7 +9,7 @@
 <body>
 	<script>
 	alert('회원가입에 실패 하였습니다. 다시해주세요.')
-	location.href = 'register.jsp';
+	location.href = 'join.jsp';
 	</script>
 </body>
 </html>

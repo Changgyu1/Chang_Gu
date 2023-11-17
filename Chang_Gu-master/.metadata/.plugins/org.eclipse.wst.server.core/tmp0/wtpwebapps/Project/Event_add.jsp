@@ -44,21 +44,21 @@
 <div class="my-div">
 <img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
  <!--로그인 버튼-->
-    <div style="text-align: right; width: 1215px;">
+	 <div style="text-align: right; width: 1215px;">
     <%
-    	if(session.getAttribute("email")!=null){
+    if(session.getAttribute("email")!=null){
     %>
-	 	<button type="button" onclick="location.href='logout.jsp'" style="width:75px;">로그아웃</button>
+	 	<button type="button" onclick="location.href='logout.jsp'" style="background:none;border:none;width:75px;">로그아웃</button>
 	 	 <h>|</h>
-	    <button type="button" onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'" style="width:100px;">마이페이지</button>
+	    <button type="button" onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'" style="background:none;border:none;width:100px;">마이페이지</button>
 	 <%
-    	}else{
+	 }else{
 	 %>
-		 <button type="button" onclick="location.href='login.jsp'" style="width:60px;">로그인</button>
+		 <button type="button" onclick="location.href='login.jsp'" style="background:none;border:none;width:60px;">로그인</button>
 		 <h>|</h>
-	    <button type="button" onclick="location.href='register.jsp'" style="width:100px;">회원가입</button>
+	    <button type="button" onclick="location.href='join.jsp'" style="background:none;border:none;width:100px;">회원가입</button>
 	  <%
-    	}
+	  }
 	  %>
 	    
 	</div>
@@ -82,31 +82,20 @@
 	<div class="event_form">
 	<label for="event_name">행사 제목 : </label>
 	<input type="text" placeholder="제목을 입력해주세요." id="event_name" name="event_name" required style="text-align:center;"><br>
-	
     <label for="event_location">행사 장소 : </label>
-	<input type="text" id="event_location" name="event_location" required> <br>
-		
+	<input type="text" id="event_location" name="event_location" required> <br>	
 	<label for="event_day"> 행사 기간 : </label>
 	<input type="text" id="event_day" name="event_day" required>
-	
 	<label for="event_time">행사 시간 : </label>
 	<input type="text" id="event_time" name="event_time" required> <br>
-	
-
-	
 	<label for="event_price">가 격 : </label>
 	<input type="number" id="event_price" name="event_price" required>
-	
 	<label for="event_age">연 령 : </label>
 	<input type="number" id="event_age" name="event_age">
     <label for="event_img">사진 : </label>
-	<input type="file" name="event_img" id="event_img" required><br>
-	
+	<input type="file" name="event_img" id="event_img" required><br>	
 	<label for="event_explain">내용 : </label> <br>
 	<textarea type="text"  id="event_explain" name="event_explain" required style="text-align:center;"> </textarea><br>
-	
-	
-	
 	<input type="submit" value="게시글 작성" class="sel">
 	</div>
 	</div>

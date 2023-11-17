@@ -9,7 +9,7 @@
 <body>
 	<script>
 	alert('아아디 중복체크를 해주세요!.')
-	location.href = 'register.jsp';
+	location.href = 'join.jsp';
 	</script>
 </body>
 </html>

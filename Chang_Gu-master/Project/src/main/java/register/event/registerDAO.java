@@ -72,7 +72,7 @@ public class registerDAO {
 		return RegisterDTO;
 	}
 	
-	public registerDTO findEmail(String phonenumber) {
+	public String findEmail(String phonenumber) {
 		registerDTO dto = new registerDTO();
 		String sql = "SELECT EMAIL FROM USERS WHERE PHONENUMBER = ?";
 		Connection conn;
@@ -82,10 +82,10 @@ public class registerDAO {
 			ps.setString(1, phonenumber);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				phonenumber = rs.getString("email");
+				String email = rs.getString("email");
 
                  dto = new registerDTO(phonenumber);
-                 return dto;
+                 return email;
 			} else {
 				return null;
 			}
@@ -97,8 +97,7 @@ public class registerDAO {
 		return null; // DB 오류
 	}
 	
-	public registerDTO findPassword(String phonenumber, String email) {
-		registerDTO dto = new registerDTO();
+	public String findPassword(String phonenumber, String email) {
 		String sql = "SELECT email, phonenumber FROM USERS WHERE PHONENUMBER = ? AND email = ?";
 		Connection conn;
 		try {
@@ -108,22 +107,17 @@ public class registerDAO {
 			ps.setString(2, email);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				phonenumber = rs.getString("phonenumber");
-				email = rs.getString("email");
-
-                 dto = new registerDTO(phonenumber, email);
-                 return dto;
+				email = rs.getString("email");               
+                 return email;
 			} else {
 				return null;
 			}
-			
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		return null; // DB 오류
+		return null;
 	}
-	
+
 	public int UpdatePassword(String password, String email) {
 		String sql = "UPDATE USERS SET password = ? WHERE email = ?";
 		Connection conn;
@@ -132,12 +126,10 @@ public class registerDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, password);
 			ps.setString(2, email);
-
 			return ps.executeUpdate();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		return -1; //DB 오류 
+		return -1;
 	}
 }

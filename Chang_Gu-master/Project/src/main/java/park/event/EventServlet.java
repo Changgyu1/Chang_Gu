@@ -40,10 +40,6 @@ public class EventServlet extends HttpServlet {
 		String event_explain = request.getParameter("event_explain");
 		try {
 			Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-			
-			
-			
-			// 회원가입 Insert 문 작성
 			String sql = "INSERT INTO event (event_name, event_day, event_time, event_location, event_price, event_age, event_img, event_explain) "
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";			
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -84,7 +80,6 @@ public class EventServlet extends HttpServlet {
 			response.sendRedirect("Event_add_success.jsp");
 			
 		} catch (SQLException e) {
-			// 실패할 경우 이동할 페이지 설정
 			e.printStackTrace();
 		}
 	}

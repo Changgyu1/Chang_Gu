@@ -99,41 +99,28 @@ td, th {
 
 <body>
 
-	<%
-	String EventPostingValue = request.getParameter("event_number");
-	int event_number = Integer.parseInt(EventPostingValue);
 
-	EventPostingDAO eventPostingDAO = new EventPostingDAO();
-
-	EventPosting eventPosting = eventPostingDAO.getEventInfo(event_number);
-	System.out.println("이벤트 디테일.ㄴ머버"+eventPosting.getEvent_number());
-	%>
 	<div class="diva">
 		<!-- 로고 이미지 -->
 		<img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
 
 		<!--로그인 버튼-->
-		<div style="text-align: right; width: 1215px;">
-			<%
-			if (session.getAttribute("email") != null) {
-			%>
-			<button type="button" onclick="location.href='logout.jsp'"
-				style="width: 75px;">로그아웃</button>
-			<h>|</h>
-			<button type="button"
-				onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'"
-				style="width: 100px;">마이페이지</button>
-			<%
-			} else {
-			%>
-			<button type="button" onclick="location.href='login.jsp'"
-				style="width: 60px;">로그인</button>
-			<h>|</h>
-			<button type="button" onclick="location.href='register.jsp'"
-				style="width: 100px;">회원가입</button>
-			<%
-			}
-			%>
+	 <div style="text-align: right; width: 1215px;">
+    <%
+    if(session.getAttribute("email")!=null){
+    %>
+	 	<button type="button" onclick="location.href='logout.jsp'" style="background:none;border:none;width:75px;">로그아웃</button>
+	 	 <h>|</h>
+	    <button type="button" onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'" style="background:none;border:none;width:100px;">마이페이지</button>
+	 <%
+	 }else{
+	 %>
+		 <button type="button" onclick="location.href='login.jsp'" style="background:none;border:none;width:60px;">로그인</button>
+		 <h>|</h>
+	    <button type="button" onclick="location.href='join.jsp'" style="background:none;border:none;width:100px;">회원가입</button>
+	  <%
+	  }
+	  %>
 			
 			
 
@@ -148,13 +135,18 @@ td, th {
 				<li onclick="location.href='Event_List.jsp'">행사정보</li>
 			</ul>
 		</div>
+	<%
+	String EventPostingValue = request.getParameter("event_number");
+	int event_number = Integer.parseInt(EventPostingValue);
 
+	EventPostingDAO eventPostingDAO = new EventPostingDAO();
+
+	EventPosting eventPosting = eventPostingDAO.getEventInfo(event_number);
+	%>
 
 		<!-- 가운데 가장 큰 박스 -->
 		<div id="background">
 			<h1 class="as"></h1>
-			<img src="">
-
 
 			<div class="sese">
 				<img src="<%=eventPostingDAO.Image(event_number)%>" alt="event_img"
@@ -162,7 +154,6 @@ td, th {
 
 
 			</div>
-
 			<h1 class="postingName"><%=eventPosting.getEvent_name()%></h1>
 			<br>
 			<div class="sese3">
@@ -207,7 +198,7 @@ td, th {
 				    
 				    </div>
 				    <div>
-				    <input type="submit" class="reserButton2" value="문의하기" onclick="location.href='Qna_Write.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
+				    <input type="submit" class="reserButton2" value="문의하기" onclick="location.href='Qna_Write2.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
 					
 					<input type="submit" class="reserButton2" value="목록가기"  onclick="location.href='Event_List.jsp'"> 
 					</div>

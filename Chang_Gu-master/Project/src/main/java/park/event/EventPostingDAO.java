@@ -102,16 +102,19 @@ public class EventPostingDAO {
 	}
 	
 	public int delete(int event_number) {
-		String sql = "DELETE EVENT WHERE event_number = ?";
-		String sql2 = "DELETE QNA WHERE event_number = ?";
+		String sqlEvent = "DELETE EVENT WHERE event_number = ?";
+		String sqlQna = "DELETE QNA WHERE event_number = ?";
+		String sqlReview = "DELETE REVIEW WHERE event_number = ?";
 		Connection conn;
 		try {
 			conn = DriverManager.getConnection(jdbcURL, username, password);
-			PreparedStatement ps = conn.prepareStatement(sql);
-			PreparedStatement ps2 = conn.prepareStatement(sql2);
-			ps2.setInt(1, event_number);
-			ps.setInt(1, event_number);
-			return ps2.executeUpdate() + ps.executeUpdate();
+			PreparedStatement event = conn.prepareStatement(sqlEvent);
+			PreparedStatement qna = conn.prepareStatement(sqlQna);
+			PreparedStatement review = conn.prepareStatement(sqlReview);
+			event.setInt(1, event_number);
+			qna.setInt(1, event_number);
+			review.setInt(1, event_number);
+			return qna.executeUpdate() + review.executeUpdate() + event.executeUpdate();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -165,7 +168,7 @@ public class EventPostingDAO {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		return null; // DB 오류
+		return null;
 	}
 	
 	public List<EventPosting> getAllProducts(int pageNumber, int pageSize){
@@ -187,9 +190,7 @@ public class EventPostingDAO {
 			*/
 	         PreparedStatement ps = conn.prepareStatement(sql);
 	         ps.setInt(1, end);
-	         ps.setInt(2, start);
-
-			
+	         ps.setInt(2, start);	
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				EventPosting eventPagination = new EventPosting();
@@ -200,9 +201,8 @@ public class EventPostingDAO {
 				eventPagination.setEvent_location(rs.getString("event_location"));
 				eventPagination.setEvent_price(rs.getDouble("event_price"));
 				
-				 Blob blob = rs.getBlob("event_img");
+				 Blob blob = rs.getBlob("event_img"); // 이미지 인코딩
                  byte[] imageBytes = blob.getBytes(1, (int) blob.length());
-
                  String imageBase64 = java.util.Base64.getEncoder().encodeToString(imageBytes);
                  String event_img = ("data:image/jpeg;base64, " + imageBase64);
                  eventPagination.setEvent_img(event_img);
@@ -210,11 +210,8 @@ public class EventPostingDAO {
 				EventPaginationList.add(eventPagination);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		return EventPaginationList;
 	}
 

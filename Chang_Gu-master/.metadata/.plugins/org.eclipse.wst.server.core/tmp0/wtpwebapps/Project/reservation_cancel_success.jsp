@@ -15,23 +15,21 @@
     <img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
 
     <!--로그인 버튼-->
-    <div style="text-align: right; width: 1215px;">
+  	 <div style="text-align: right; width: 1215px;">
     <%
-    	if(session.getAttribute("email")!=null){
+    if(session.getAttribute("email")!=null){
     %>
-	 	<button type="button" onclick="location.href='logout.jsp'" style="width:75px;">로그아웃</button>
+	 	<button type="button" onclick="location.href='logout.jsp'" style="background:none;border:none;width:75px;">로그아웃</button>
 	 	 <h>|</h>
-	    <button type="button"
-				onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'"
-				style="width: 100px;">마이페이지</button>
+	    <button type="button" onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'" style="background:none;border:none;width:100px;">마이페이지</button>
 	 <%
-    	}else{
+	 }else{
 	 %>
-		 <button type="button" onclick="location.href='login.jsp'" style="width:60px;">로그인</button>
+		 <button type="button" onclick="location.href='login.jsp'" style="background:none;border:none;width:60px;">로그인</button>
 		 <h>|</h>
-	    <button type="button" onclick="location.href='register.jsp'" style="width:100px;">회원가입</button>
+	    <button type="button" onclick="location.href='join.jsp'" style="background:none;border:none;width:100px;">회원가입</button>
 	  <%
-    	}
+	  }
 	  %>
 	
 <!-- 메뉴바 -->
@@ -43,7 +41,6 @@
 			<li onclick="location.href='Event_List.jsp'">행사정보</li>
 		</ul>
 	</div>
-
 	<!-- 가운데 가장 큰 박스 -->
 	<div id="background">
 	
@@ -51,7 +48,7 @@
 		<!-- 안에 글넣는 하얀 박스-->
 		<div id="reviewbox">
            <h2>예약이 취소 되었습니다.</h2>
-           <a href="reservation.jsp">다시 예약하러 가기</a>
+           <a href="reservation.jsp?event_number=<%=session.getAttribute("event_number")%>">다시 예약하러 가기</a>
         </div>
 	 </div>
 	
