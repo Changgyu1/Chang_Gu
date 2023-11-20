@@ -6,7 +6,8 @@
   이미지는 추후에 변경하시거나 삭제하시면 됩니다.<br /> 보통 메인 이미지를 올려놓습니다.<br />
   <img src="https://img.freepik.com/free-vector/video-conference-remote-working-flat-illustration-screen-laptop-with-group-colleagues-people-conn_88138-548.jpg?w=900&t=st=1691033873~exp=1691034473~hmac=36bcd6579f5373a2f4555b77b3c120770cb7ab06608a267b80ca7ec436648620">
   <br>
-</p>
+</p>![main](https://github.com/Changgyu1/Chang_Gu/assets/100547448/8129e6b5-b507-4af4-ac95-7f9ee12e7872)
+
 
 
 
