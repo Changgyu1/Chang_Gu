@@ -45,7 +45,6 @@
 <p> 문의 제목 : <%= session.getAttribute("qna_title")%></p>
 <p> 문의 내용 : <%= session.getAttribute("qna_content")%></p>
 <p> 작성자 : <%= session.getAttribute("qna_name")%></p>
-<p> 비밀번호 : <%= session.getAttribute("qna_password")%></p>
 <p> 작성일 : <%=session.getAttribute("qna_date") %></p>
 <p> 이메일 : <%= session.getAttribute("qna_email")%></p>
 

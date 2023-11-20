@@ -80,8 +80,7 @@ CREATE TABLE qna_comment (
     qna_comment_password    number(4)   NOT NULL
 );
 ALTER TABLE qna ADD CONSTRAINT PK_QNA PRIMARY KEY (
-    qna_number,
-    event_number
+    qna_number
 );
 ALTER TABLE reservation ADD CONSTRAINT PK_RESERVATION PRIMARY KEY (
     r_id

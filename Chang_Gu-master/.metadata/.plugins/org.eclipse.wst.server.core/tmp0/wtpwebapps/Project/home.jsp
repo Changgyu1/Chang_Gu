@@ -141,7 +141,9 @@
 
 		<button id="pagination-before" name="pagination-before"
 			onclick="pageBefore()">이전</button>
+			
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
 		<button id="pagination-next" name="pagination-next"
 			onclick="pageNext()">다음</button>
 		</table>

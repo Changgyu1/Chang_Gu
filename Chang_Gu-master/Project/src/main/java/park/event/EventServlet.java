@@ -53,19 +53,6 @@ public class EventServlet extends HttpServlet {
 			preparedStatement.setString(8, event_explain);
 			
 			preparedStatement.executeUpdate();
-
-																					/*
-			 가입 성공할 경우 회원 정보를 세션에 저장
-			 세션 객체를 통해 클라이언트와 서버간에 전송할 데이터를 저장하고
-			 공유하는 작업을 수행
-			 session에다 "mno"라는 이름으로 데이터를 저장하는 역할
-			 request : 현재 클라이언트의 요청에 대한 정보를 제공하는 역할을 함
-			 session 이란 ? 웹이나 애플리케이션 상태를 유지하고 데이터를 저장하기 위해 사용
-			 getSession() : request에서 현재 세션을 가지고 옴
-			 setAttribute("mno", mno) : 세션에 데이터를 저장하는 메서드
-			 "mno" 라는 이름으로 데이터를 저장하고 mno 변수 값이 해당 데이터로 설정되게 함
-			 이렇게 저장된 데이터는 다른 서블릿이나 jsp 페이지에서 접근 가능함
-									*/
 			
 			request.getSession().setAttribute("event_name", event_name);
 			request.getSession().setAttribute("event_day", event_day);
