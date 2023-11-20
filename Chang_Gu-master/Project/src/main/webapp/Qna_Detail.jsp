@@ -113,6 +113,7 @@ onclick="location.href='Qna_Update.jsp?qna_number=<%=session.getAttribute("qna_n
                	
                 QnaCommentDAO qnacommentDAO = new QnaCommentDAO();
                 int qna_number = Integer.parseInt((request.getParameter("qna_number")));
+                System.out.println(qna_number);
                 ArrayList<QnaComment> commentList = qnacommentDAO.getQnaCommentByqna_number(qna_number);
                 
                 for(QnaComment qc : commentList) {

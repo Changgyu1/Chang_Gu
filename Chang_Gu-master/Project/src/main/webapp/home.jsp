@@ -18,19 +18,20 @@
 	height: 400px;
 }
 </style>
-					<%
-					int pageNumber = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
-					int pageSize = 1;
-					
-
-					EventPostingDAO eventPaginationDAO = new EventPostingDAO();
-					List<EventPosting> eventPagination = eventPaginationDAO.getAllProducts(pageNumber, pageSize);
-					int totalEventList = eventPaginationDAO.getTotalProducts();
-					int totalPages = (int) Math.ceil((double) totalEventList / pageSize);
-					int count = 5;
-					%>
+	<%
+		int pageNumber = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+		int pageSize = 1;
+		
+	
+		EventPostingDAO eventPaginationDAO = new EventPostingDAO();
+		List<EventPosting> eventPagination = eventPaginationDAO.getAllProducts(pageNumber, pageSize);
+		int totalEventList = eventPaginationDAO.getTotalProducts();
+		int totalPages = (int) Math.ceil((double) totalEventList / pageSize);
+		int count = 5;
+	%>
 					
 <script>
+
 	function loginFail() {
 		alert("로그인에 실패하였습니다.");
 		window.location.href = "login.jsp";
@@ -134,29 +135,29 @@
 					}
 					%>
 				
+				</div>
 			</div>
-		</div>
 		<br>
 		
 
 		<button id="pagination-before" name="pagination-before"
 			onclick="pageBefore()">이전</button>
+				
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		
-		<button id="pagination-next" name="pagination-next"
+			<button id="pagination-next" name="pagination-next"
 			onclick="pageNext()">다음</button>
 		</table>
 	</div>
 	<%
-	String loginError = (String) request.getAttribute("loginError");
-	if (loginError != null) {
-	%>
-	<script>
-		loginFail();
-	</script>
-	<%
-	}
+		String loginError = (String) request.getAttribute("loginError");
+		if (loginError != null) {
+			%>
+			<script>
+				loginFail();
+			</script>
+			<%
+		}
 	%>
 	<script>
 

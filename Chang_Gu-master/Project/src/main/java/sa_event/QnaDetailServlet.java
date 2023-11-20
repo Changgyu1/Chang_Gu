@@ -57,9 +57,10 @@ public class QnaDetailServlet extends HttpServlet {
 		    }
 
 		    response.sendRedirect("Qna_Detail.jsp?qna_number=" + qna_number);
-
+		    
 		} catch (SQLException e) {
-		    response.sendRedirect("");
+		    response.sendRedirect("Qna_DetailError.jsps");
+		    
 		    e.printStackTrace();
 		}
 
