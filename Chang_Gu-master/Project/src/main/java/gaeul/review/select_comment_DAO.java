@@ -26,9 +26,8 @@ public class select_comment_DAO {
 	try {
 		con=DriverManager.getConnection(url, user, pw);
 		
-		String sql="select * from review_comment c join review r on c.review_number= r.review_number where c.review_number=?";
+		String sql="select * from review_comment c join review r on c.review_number= r.review_number where c.review_number=? order by comment_date";
 	
-		System.out.println("리뷰번호"+rnum);
 		PreparedStatement ps = con.prepareStatement(sql);
 	
 		ps.setInt(1,rnum);
