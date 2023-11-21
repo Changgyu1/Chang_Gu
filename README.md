@@ -18,10 +18,7 @@
 </p>
 
 <p align="center">
-여러분이 만든 프로젝트를 캡쳐하거나 <strong>GIF</strong> 화면으로 만들어 <br />
-상대방이 프로젝트를 예시로 한 번에 볼수 있게 만들어주는게 좋습니다.<br />
-또는 배포하여 프로젝트 사이트를 올려도 좋습니다.<br />
-<strong>GIF</strong> 또는 <strong>Images</strong>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EC%9D%B4%EB%AF%B8%EC%A7%80.gif?raw=true"><br>
 </p>
 
 <br>
@@ -68,7 +65,6 @@ INSERT 한 행사 SELECT 로 나열해서 보여주기 (페이지네이션)<br>
 ## 배운 점 & 아쉬운 점
 
 <p align="justify">
-여러분이 프로젝트를 진행하며 배운 부분과 에러해결(trouble shooting)을 작성해서 기술하면 좋습니다.<br />
 처음 진행해보고 어떠한 방식으로 접근 해야할지 몰라서 어렵움을 겪었고 처음 설계를 해보면서  <br>
 잘하고 있는지에 대해서 힘들었습니다.<br>
 혼자서 코딩을 하다가 팀과함께 같이 의견을 제시하고 받으면서 생각하는 폭을 넓힐수 있었고<br>
