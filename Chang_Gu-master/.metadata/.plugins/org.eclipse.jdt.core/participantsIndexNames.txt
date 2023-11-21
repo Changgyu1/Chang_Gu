@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\user1\Desktop\Chang_Gu-master\Chang_Gu-master - 복사본\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4114514053.index
-\Project\src\main\java
-C:\Users\user1\Desktop\Event_Master\Chang_Gu-master\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4114514053.index
-\Project\src\main\java
-C:\Users\user1\Desktop\Chang_Gu-master\Chang_Gu-master - 복사본\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3572854974.index
-\Project\src\main\java

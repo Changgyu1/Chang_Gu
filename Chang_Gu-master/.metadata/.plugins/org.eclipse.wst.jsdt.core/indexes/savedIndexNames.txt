@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+C:\Users\user1\Desktop\Event_Master\Chang_Gu-master\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2237695361.index
-292284083.index
-1858260702.index
-2100812816.index
-449384428.index
-4114514053.index
-3499314588.index
