@@ -1,0 +1,8 @@
+#rebutton,
+#cbutton{
+	width: 80px;
+}
+#crebutton{
+	text-align: right;
+	margin-right: 100px;
+}

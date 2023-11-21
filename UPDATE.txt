@@ -1,0 +1,30 @@
+--회원가입
+--이메일 변경
+UPDATE users SET email = 'sss@naver.com' where = 'aaa123!';
+--폰번호 변경
+UPDATE users SET phonenumber = '010-4444-5555' WHERE = 'lll123!'
+
+--행사
+-- 장소 변경
+UPDATE event SET event_location = '서울대학교' WHERE event_number = 5;
+--시간 변경
+UPDATE event SET event_time = '118분' WHERE event_number = 2;
+--날짜 변경
+UPDATE event SET event_day = '2023-11-11 ~ 2023-12-30' WHERE event_number = 6;
+
+--예약
+update reservation set r_phonenumber='010-5555-555' where r_id=3;
+
+--문의
+--회원 업데이트
+UPDATE qna SET qna_reply = '행사 일정 변경되어 알려드립니다. 변경된 행사 일정은 2023-10-31입니다.' WHERE qna_number = 1;
+UPDATE qna SET qna_reply = '변경된 행사 시간은 2시간30분 입니다.' WHERE qna_number = 2;
+UPDATE qna SET qna_reply = '인근 주차장 안내는 공지사항을 참고해주세요. ' WHERE qna_number = 3;
+--비회원 업데이트
+UPDATE qna SET qna_title = '주차 문의' WHERE qna_number = 4;
+UPDATE qna SET qna_title = '좌석 문의합니다!' WHERE qna_number = 5;
+
+--후기
+update review set review='너무 힐링되는 축제였어요!' where review_numbew=7;
+update review set review='너무 멋진 축제였어요!' where review_numbew=8;
+update review set review='너무 즐거운 축제였어요!' where review_numbew=1;

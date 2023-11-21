@@ -1,0 +1,20 @@
+--회원가입
+DELETE users WHERE email = 'abc@gmail.com' AND password = 'abc123!'
+
+--행사
+DELETE FROM event WHERE event_number = 1;
+
+--예약
+delete from reservation where r_id = 3;
+
+--문의
+DELETE qna WHERE qna_number = 1;
+DELETE qna WHERE qna_number = 2;
+DELETE qna WHERE qna_number = 3;
+DELETE qna WHERE qna_number = 4;
+DELETE qna WHERE qna_number = 5;
+
+--후기
+delete reivew where review_number=7;
+delete reivew where review_number=8;
+delete reivew where review_number=9;
