@@ -38,19 +38,31 @@
 
 ### 기능 1
 행사 정보 INSERT 로 행사 등록하기<br>
-<img src="">
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%ED%96%89%EC%82%AC%EC%9E%91%EC%84%B1.png?raw=true"><br>
 ### 기능 2
-INSERT 한 행사 SELECT 로 나열해서 보여주기 (페이지네이션)
-<img src="">
+INSERT 한 행사 SELECT 로 나열해서 보여주기 (페이지네이션)<br>
+<img src=""><br>
 
 ### 기능 3
-행사정보 들어가서 UPDATE(수정) 하기
-<img src="">
+행사정보 들어가서 UPDATE(수정) 하기 - 입력한 데이터를 그대로 불러온다<br>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0.png?raw=true"><br>
 
 ### 기능 4
-행사정보 들어가서 DELETE(삭제) 하기
-<img src="">
+행사정보 들어가서 DELETE(삭제) 하기<br>
 
+### 그외 기능
+관리자 계정이 아닐때<br>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EB%94%94%ED%85%8C%EC%9D%BC.png?raw=true"><br>
+관리자 계정일때 <br>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EB%94%94%ED%85%8C%EC%9D%BC(%EA%B4%80%EB%A6%AC%EC%9E%90%EA%B3%84%EC%A0%95).png?raw=true"><br>
+
+비밀번호 찾기<br>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EC%B0%BE%EA%B8%B01.png?raw=true"><br>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EC%B0%BE%EA%B8%B02.png?raw=true"><br>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EC%B0%BE%EA%B8%B03.png?raw=true"><br>
+아이디 찾기<br>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EC%95%84%EC%9D%B4%EB%94%94%EC%B0%BE%EA%B8%B01.png?raw=true"><br>
+<img src="https://github.com/Changgyu1/Chang_Gu/blob/master/readme-static/svg/%EC%95%84%EC%9D%B4%EB%94%94%EC%B0%BE%EA%B8%B02.png?raw=true"><br>
 <br>
 
 ## 배운 점 & 아쉬운 점
