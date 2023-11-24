@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="park.event.EventPostingDAO"%>
+<%@ page import = "java.io.PrintWriter" %>
+<%@ page import="java.io.*,java.util.*,javax.servlet.*"%>
+<%@ page import="javax.servlet.http.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +13,9 @@
 </head>
 <body>
 	<script>
-	alert('게시글 작성이 완료 되었습니다.')
-	location.href = 'Event_List.jsp';
-	</script>
+	alert('성공');
+	location.href = 'home.jsp'
+	</script>	
 </body>
+
 </html>

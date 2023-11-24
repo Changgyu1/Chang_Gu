@@ -225,9 +225,12 @@ td, th {
 	<%
 					if (session.getAttribute("email").equals("kiga1234@kiga1234")) {
 					%>
-					<input type="submit" value="수정하기" class="reserButton3" onclick="location.href='Event_Update.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
-			
-					<input type="submit" value="삭제하기" class="reserButton3" onclick="location.href='Event_delete_success.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
+	<input type="submit" value="수정하기" class="reserButton3" onclick="location.href='Event_Update.jsp?event_number=<%=eventPosting.getEvent_number()%>'">
+	
+	<form action="EventServlet" method="post">
+	<input type=text name="event_number" value="<%=request.getParameter("event_number")%>">
+    <input type="submit" value="삭제하기" class="reserButton3">
+	</form>
 				<%} %>
 				</div>
 				</div>

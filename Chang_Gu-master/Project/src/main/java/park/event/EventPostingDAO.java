@@ -1,5 +1,6 @@
 package park.event;
 
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +9,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 public class EventPostingDAO {
 
@@ -24,6 +33,29 @@ public class EventPostingDAO {
 		}
 	}
 	
+	public int InsertEvent(String event_name, String event_day, String event_time, String event_location, double event_price, int event_age, Part event_img, String event_explain) throws IOException {
+		
+		try {
+		Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+		String sql = "INSERT INTO EVENT(event_name, event_day, event_time, event_location, event_price,event_age, event_img,event_explain)"
+				+ "VALUES(?, ?, ?, ?, ? ,? ,? ,?)";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setString(1, event_name);
+		ps.setString(2, event_day);
+		ps.setString(3, event_time);
+		ps.setString(4, event_location);
+		ps.setDouble(5, event_price);
+		ps.setInt(6, event_age);
+		ps.setBinaryStream(7, event_img.getInputStream(),(int) event_img.getSize());
+		ps.setString(8, event_explain);
+		
+		return ps.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
 	public int deleteEventPage(int event_number) {
 		try {
 			Connection connection = DriverManager.getConnection(jdbcURL, username, password);
