@@ -149,7 +149,7 @@ margin: 0px 0px 0px 143px;
 	} else {
 %>
 		<input type="button" class="add-event" id="toggleButton"
-			onclick="location.href='Event_add.jsp'" value="게시글 작성">
+			onclick="location.href='Event_add.jsp'"  value="게시글작성">
 <%
 	}
 %>

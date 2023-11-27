@@ -229,7 +229,7 @@ td, th {
 	
 	<form action="EventServlet" method="post">
 	<input type=text name="event_number" value="<%=request.getParameter("event_number")%>">
-    <input type="submit" value="삭제하기" class="reserButton3">
+    <input type="submit" name="delete" value="삭제하기" class="reserButton3">
 	</form>
 				<%} %>
 				</div>

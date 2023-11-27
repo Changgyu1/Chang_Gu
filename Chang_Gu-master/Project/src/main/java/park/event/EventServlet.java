@@ -19,12 +19,25 @@ import javax.servlet.http.Part;
 public class EventServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EventAdd(request, response);
-        EventDelete(request, response);
+
+             String addParam = request.getParameter("add");
+             String deleteParam = request.getParameter("delete");
+
+             if (addParam != null && addParam.equals("게시글 작성")) {
+                 EventAdd(request, response);
+
+             } else if (deleteParam != null && deleteParam.equals("삭제하기")) {
+                 EventDelete(request, response);
+
+             } else {
+                 return;
+             }
+    		
+    		
         
-        System.out.println(request.getParameter("event_number"));
     }
-   
+    
+    // 행사 등록 메서드
     public void EventAdd(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String event_name = request.getParameter("event_name");
@@ -35,8 +48,6 @@ public class EventServlet extends HttpServlet {
         int event_age = Integer.parseInt(request.getParameter("event_age"));
         Part event_img = request.getPart("event_img");
         String event_explain = request.getParameter("event_explain");
-
-        // 여기서부터는 기존 코드와 동일
 
     	EventPostingDAO dao = new EventPostingDAO();
         int result = dao.InsertEvent(event_name, event_day, event_time, event_location, event_price, event_age,
@@ -50,19 +61,17 @@ public class EventServlet extends HttpServlet {
         }
     }
     
+    // 행사 삭제 메서드
     public void EventDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	System.out.println("test" + request.getParameter("event_number"));
 	
     		int event_number = Integer.parseInt(request.getParameter("event_number"));
-    		System.out.println("test" + event_number);
     		EventPostingDAO dao = new EventPostingDAO();
     		int result = dao.delete(event_number);
     		if(result == -1) {
     			response.sendRedirect("Event_delete_success.jsp");
     			
     		} else {
-    			System.out.println("delete성공");
     			response.sendRedirect("Event_delete_success.jsp");
     		}
     }

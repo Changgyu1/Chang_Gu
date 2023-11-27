@@ -100,7 +100,7 @@
 	<input type="file" multiple="multiple" name="event_img" id="event_img" required><br>	
 	<label for="event_explain">내용 : </label> <br>
 	<textarea type="text"  id="event_explain" name="event_explain" required style="text-align:center;"> </textarea><br>
-	<input type="submit" value="게시글 작성" class="sel">
+	<input type="submit" value="게시글 작성" name="add" class="sel">
 	</form>
 	</div>
 	</div>
