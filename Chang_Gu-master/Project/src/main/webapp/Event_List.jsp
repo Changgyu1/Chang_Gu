@@ -4,15 +4,24 @@
 <%@ page import="java.util.List"%>
 <%@ page import="park.event.EventPosting"%>
 <%@ page import="park.event.EventPostingDAO"%>
+<%
+String userEmail = (String)session.getAttribute("email");
+//페이지네이션 이미지
+int pageNumber = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+int pageSize = 2;
+EventPostingDAO eventPaginationDAO = new EventPostingDAO();
+List<EventPosting> eventPagination = eventPaginationDAO.getAllProducts(pageNumber, pageSize);
+// 페이지 번호
+int totalEventList = eventPaginationDAO.getTotalProducts();
+int totalPages = (int) Math.ceil((double) totalEventList / pageSize);
+%> 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-
-<link rel="stylesheet" href="./css/event.css">
-<style>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="./css/event.css">
+	<style>
 body{
    position: absolute;
     paddi: ;
@@ -72,7 +81,7 @@ text-align: center;
 
             padding: 20px;
 }
-.nameEv{
+.eventList_name{
 margin: 0px 0px 0px 143px;
     text-align: center;
     text-decoration: none;
@@ -93,36 +102,37 @@ margin: 0px 0px 0px 143px;
 </style>
 </head>
 <body>
-	<div class="diva">
+	  <script>
+	  	document.addEventListener("DOMContentLoaded", function() {
+        const toggleButton = document.getElementById('toggleButton');
+        const userEmail = '<%=session.getAttribute("email")%>';
+        if (userEmail === 'kiga1234@kiga1234') {
+            toggleButton.style.display = 'block';
+        } else {
+            toggleButton.style.display = 'none';
+        }
+    });
+	</script>
+	<div>
 		<!-- 로고 이미지 -->
 		<img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
 
 		<!--로그인 버튼-->
 	 <div style="text-align: right; width: 1215px;">
-    <%
-    if(session.getAttribute("email")!=null){
-    %>
+   		 <% if(session.getAttribute("email")!=null){ %>
+   		 
 	 	<button type="button" onclick="location.href='logout.jsp'" style="background:none;border:none;width:75px;">로그아웃</button>
 	 	 <h>|</h>
 	    <button type="button" onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'" style="background:none;border:none;width:100px;">마이페이지</button>
-	 <%
-	 }else{
-	 %>
+	    
+	 <% }else{ %>
+	 
 		 <button type="button" onclick="location.href='login.jsp'" style="background:none;border:none;width:60px;">로그인</button>
 		 <h>|</h>
 	    <button type="button" onclick="location.href='join.jsp'" style="background:none;border:none;width:100px;">회원가입</button>
-	  <%
-	 }
-	  %>
-
-		
-		<script>
-    // 가상으로 사용자가 로그인되었다고 가정
-    // 실제 상황에서는 이를 세션 로직으로 대체해야 합니다.
-
-</script>
-		</div>
-
+	    
+	  <% } %>
+	</div>
 		<!-- 메뉴바 -->
 		<div id="buttons">
 			<ul>
@@ -135,98 +145,34 @@ margin: 0px 0px 0px 143px;
 
 		<!-- 가운데 가장 큰 박스 -->
 		<div id="background">
-
-			<h2>행사 작성</h2>
+			<h2>행사 목록</h2>
 			<div class="add-event">  
-
-	 <%
-	String userEmail = (String)session.getAttribute("email");
-	if (!"kiga1234@kiga1234".equals(userEmail)) {
-%>
-		<input type="hidden" class="add-event" id="toggleButton"
-			onclick="location.href='Event_add.jsp'" value="게시글 작성">
-<%
-	} else {
-%>
-		<input type="button" class="add-event" id="toggleButton"
-			onclick="location.href='Event_add.jsp'"  value="게시글작성">
-<%
-	}
-%>
-	  
-	  
-	  <script>
-    // 페이지 로드 시 실행되는 JavaScript 코드
-    document.addEventListener("DOMContentLoaded", function() {
-        const toggleButton = document.getElementById('toggleButton');
-        const userEmail = '<%=session.getAttribute("email")%>';
-
-        if (userEmail === 'kiga1234@kiga1234') {
-            toggleButton.style.display = 'block';
-        } else {
-            toggleButton.style.display = 'none';
-        }
-    });
-</script>
-
+		 <% if (!"kiga1234@kiga1234".equals(userEmail)) { 	%>
+				<input type="hidden" class="add-event" id="toggleButton" onclick="location.href='Event_add.jsp'" value="게시글 작성">
+			<% } else { %>
+		<input type="button" class="add-event" id="toggleButton" onclick="location.href='Event_add.jsp'"  value="게시글작성">
+			<% } %>
 			</div>
+			
 			<!-- 안에 글넣는 하얀 박스-->
-			<div id="whitebox2">
-
-		
-					<!-- 이미지 -->
-					<%
-					int pageNumber = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
-					int pageSize = 2;
-					//int pageNumber = Integer.parseInt(request.getParameter("page"));
-
-					EventPostingDAO eventPaginationDAO = new EventPostingDAO();
-					List<EventPosting> eventPagination = eventPaginationDAO.getAllProducts(pageNumber, pageSize);
-					%>
-					<div class="pagination">
-						<%
-						for (EventPosting p : eventPagination) {
-						%>
-						<div class="pagination-ismg">
-							<a href="Event_Detal.jsp?event_number=<%=p.getEvent_number()%>">
-								<img src="<%=p.getEvent_img()%>" class="pagination-img">
-							</a> <br>
-							<a href="Event_Detal.jsp?event_number=<%=p.getEvent_number()%>" class="nameEv" ><%=p.getEvent_name() %></a>
-							</div>
-						<%
-						}
-						%>
-					
+			<div id="whitebox2">	<!-- 이미지 -->
+				<div class="pagination">
+					<% for (EventPosting p : eventPagination) { %>
+					<div class="pagination-ismg">
+						<a href="EventServlet?event_number=<%=p.getEvent_number()%>"> <img src="<%=p.getEvent_img()%>" class="pagination-img"> </a> <br>
+						<a href="EventServlet?event_number=<%=p.getEvent_number()%>" class="eventList_name"><%=p.getEvent_name() %></a>
 					</div>
-			
-
-
-			
-		
-				<!-- 페이지 넘기는 버튼-->
-	
-	<div class="Pagebutton">
-		<%
-		//1. 페이지네이션 링크를 생성해줄것이고, 링크는 page 값에 따라서 다르게 보일 것
-		int totalEventList = eventPaginationDAO.getTotalProducts(); //전체 제품 가져오기
-		int totalPages = (int) Math.ceil((double) totalEventList / pageSize);
-
-		for (int i = 1; i <= totalPages; i++) {
-		%>
-		
-		<a href="<%=request.getRequestURI()%>?page=<%=i%>"><%=i%></a>
-	
-		<%
-		}
-		%>
+					<% } %>
+				</div>
+							
+	<!-- 페이지 넘기기 버튼 -->
+				<div class="Pagebutton">		
+				<%	for (int i = 1; i <= totalPages; i++) { %>
+					<a href="<%=request.getRequestURI()%>?page=<%=i%>"><%=i%></a>	
+				<% } %>
+				</div>
+			</div>
+		</div>
 	</div>
-	</div>
-
-
-
-
-
-
-
 </body>
 </html>

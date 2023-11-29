@@ -43,14 +43,6 @@
 </style>
 </head>
 <body>
-	<% 
-		String EventPostingValue = request.getParameter("event_number");
-		int event_number = Integer.parseInt(EventPostingValue);
-		
-		EventPostingDAO eventPostingDAO = new EventPostingDAO();
-		
-		EventPosting eventPosting = eventPostingDAO.getEventInfo(event_number);
-	%>
 	<div class="diva">
 		<!-- 로고 이미지 -->
 		<img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
@@ -88,40 +80,40 @@
     <!-- 가운데 가장 큰 박스 -->
 	<div id="background">
 	
-	<h3 style="text-align:center;">행사글 작성 <%=eventPosting.getEvent_number()%></h3>
+	<h3 style="text-align:center;">행사글 작성 <%=session.getAttribute("event_number")%></h3>
 	<div id="whitebox">
 	
-<form method="post" action="Event_Update_success.jsp?event_number=<%=eventPosting.getEvent_number()%>">
+<form method="post" action="EventServlet">
 	<div class="event_form">
 	<label for="event_name">행사 제목 : </label>
 	
-	<input type="text" id="event_name" name="event_name" value="<%=eventPosting.getEvent_name() %>"  style="text-align:center;"><br>
+	<input type="text" id="event_name" name="event_name" value="<%=session.getAttribute("event_name") %>"  style="text-align:center;"><br>
 	
     <label for="event_location">행사 장소 : </label>
-    <input type="text" id="event_location" name="event_location" value="<%=eventPosting.getEvent_location()%>"  style="text-align:center;"><br>
+    <input type="text" id="event_location" name="event_location" value="<%=session.getAttribute("event_location")%>"  style="text-align:center;"><br>
 		
 	<label for="event_day"> 행사 기간 : </label>
-	<input type="text" id="event_day" name="event_day" value="<%=eventPosting.getEvent_day()%>"  style="text-align:center;">
+	<input type="text" id="event_day" name="event_day" value="<%=session.getAttribute("event_day")%>"  style="text-align:center;">
 	
 	<label for="event_time">행사 시간 : </label>
-	<input type="text" id="event_time" name="event_time" value="<%=eventPosting.getEvent_time()%>"  style="text-align:center;"><br>
+	<input type="text" id="event_time" name="event_time" value="<%=session.getAttribute("event_time")%>"  style="text-align:center;"><br>
 	
 
 	
 	<label for="event_price">가 격 : </label>
-	<input type="number" id="event_price" name="event_price" value="<%=eventPosting.getEvent_price() %>"  style="text-align:center;">
+	<input type="number" id="event_price" name="event_price" value="<%=session.getAttribute("event_price") %>"  style="text-align:center;">
 	
 	<label for="event_age">연 령 : </label>
-	<input type="number" id="event_age" name="event_age" value="<%=eventPosting.getEvent_age()%>"  style="text-align:center;"><br>
+	<input type="number" id="event_age" name="event_age" value="<%=session.getAttribute("event_age")%>"  style="text-align:center;"><br>
 
 	
 	<label for="event_explain">내용 : </label> <br>
-	<input type="text" id="event_explain" name="event_explain" value="<%=eventPosting.getEvent_explain()%>" style="text-align:center"> </textarea><br>
+	<input type="text" id="event_explain" name="event_explain" value="<%=session.getAttribute("event_explain")%>" style="text-align:center"> </textarea><br>
 	
 	
+	<input type="hidden" name="event_number" value="<%=session.getAttribute("event_number")%>">
 	
-	
-	<input type="submit" value="수정하기" class="sel">
+	<input type="submit" name="update" value="수정하기" class="sel">
 	</div>
 </form>
 

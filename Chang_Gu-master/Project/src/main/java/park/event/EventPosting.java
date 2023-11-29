@@ -11,6 +11,7 @@ public class EventPosting {
 	private double event_price;
 	private int event_age;
 	private String event_explain;
+	private String event_img;
 	private Blob event_imgs;
 	
 	public Blob getEvent_imgs() {
@@ -21,8 +22,6 @@ public class EventPosting {
 	public void setEvent_imgs(Blob event_imgs) {
 		this.event_imgs = event_imgs;
 	}
-
-	private String event_img;
 	
 
 	public EventPosting() {}
@@ -37,6 +36,19 @@ public class EventPosting {
 
 		
 		eventPostingDAO.updateEvent(0, null, null, null, null, 0, 0, null);
+	}
+	
+	public EventPosting(int event_number, String event_name, String event_day, String event_time, String event_location, double event_price,
+			int event_age , String event_img, String event_explain) {
+		this.event_number = event_number;
+		this.event_name = event_name;
+		this.event_day = event_day;
+		this.event_time = event_time;
+		this.event_location = event_location;
+		this.event_price = event_price;
+		this.event_age = event_age;
+		this.event_img = event_img;
+		this.event_explain = event_explain;
 	}
 	
 	public EventPosting(int event_number, String event_name, String event_day, String event_time, String event_location, double event_price,

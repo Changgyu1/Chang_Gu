@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>404 ERROR</title>
 </head>
 <body>
 	<script>
-	alert('삭제에 실패하였습니다.')
+	alert('알 수 없는 ERROR 발생')
 	location.href = 'home.jsp
 	</script>
 </body>
