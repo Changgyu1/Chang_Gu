@@ -81,7 +81,7 @@
 					<label for="event_price">가 격 : </label>
 					<input type="number" id="event_insert_form_price" name="event_price" required>
 					<label for="event_age">연 령 : </label>
-					<input type="number" id="event_insert_form_age" name="event_age">
+					<input type="number" id="event_insert_form_age" name="event_age" oninput='handleOnInput(this, 2)' required>
     				<label for="event_img">사진 : </label>
 					<input type="file" multiple="multiple" name="event_img" id="event_insert_form_img" required><br>	
 					<label for="event_explain">내용 : </label> <br>
@@ -96,5 +96,15 @@
 	<button onclick="location.href='Event_List.jsp'">돌아가기</button>
 
 </div>
+
+<script>
+
+function handleOnInput(el, maxlength) {
+	  if(el.value.length > maxlength)  {
+	    el.value 
+	      = el.value.substr(0, maxlength);
+	  }
+	}
+</script>
 </body>
 </html>

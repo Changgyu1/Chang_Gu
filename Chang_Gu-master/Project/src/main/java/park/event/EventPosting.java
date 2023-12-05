@@ -31,13 +31,6 @@ public class EventPosting {
 		this.event_number = event_number;
 	}
 
-	public static void main(String[] args) {
-		EventPostingDAO eventPostingDAO = new EventPostingDAO();
-
-		
-		eventPostingDAO.updateEvent(0, null, null, null, null, 0, 0, null);
-	}
-	
 	public EventPosting(int event_number, String event_name, String event_day, String event_time, String event_location, double event_price,
 			int event_age , String event_img, String event_explain) {
 		this.event_number = event_number;

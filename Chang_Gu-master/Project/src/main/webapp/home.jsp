@@ -18,20 +18,19 @@
 	height: 400px;
 }
 </style>
-	<%
-		int pageNumber = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
-		int pageSize = 1;
-		
-	
-		EventPostingDAO eventPaginationDAO = new EventPostingDAO();
-		List<EventPosting> eventPagination = eventPaginationDAO.getAllProducts(pageNumber, pageSize);
-		int totalEventList = eventPaginationDAO.getTotalProducts();
-		int totalPages = (int) Math.ceil((double) totalEventList / pageSize);
-		int count = 5;
-	%>
+					<%
+					int pageNumber = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+					int pageSize = 1;
+					
+
+					EventPostingDAO eventPaginationDAO = new EventPostingDAO();
+					List<EventPosting> eventPagination = eventPaginationDAO.getAllProducts(pageNumber, pageSize);
+					int totalEventList = eventPaginationDAO.getTotalProducts();
+					int totalPages = (int) Math.ceil((double) totalEventList / pageSize);
+					int count = 5;
+					%>
 					
 <script>
-
 	function loginFail() {
 		alert("로그인에 실패하였습니다.");
 		window.location.href = "login.jsp";
@@ -77,14 +76,14 @@
 		<!--로고이미지-->
 		<img src="./image/로고1.png" id="logo" onclick="location.href='home.jsp'">
 
-		<!--로그인 버튼-->
-	 <div style="text-align: right; width: 1215px;">
+	<!--로그인 버튼-->
+ 	 <div style="text-align: right; width: 1215px;">
     <%
     if(session.getAttribute("email")!=null){
     %>
 	 	<button type="button" onclick="location.href='logout.jsp'" style="background:none;border:none;width:75px;">로그아웃</button>
 	 	 <h>|</h>
-	    <button type="button" onclick="location.href='mypageServlet?email=<%=session.getAttribute("email")%>'" style="background:none;border:none;width:100px;">마이페이지</button>
+	    <button type="button" onclick="location.href='mypage.jsp?email=<%=session.getAttribute("email")%>'" style="background:none;border:none;width:100px;">마이페이지</button>
 	 <%
 	 }else{
 	 %>
@@ -121,43 +120,38 @@
 					<%
 					for (EventPosting p : eventPagination) {
 					%>
-
-
-
 					<div class="pagination">
 						<div class="imagecenter">
-							<a href="Event_Detal.jsp?event_number=<%=p.getEvent_number()%>">
-								<img src="<%=p.getEvent_img()%>" class="pagination-img">
-							</a>
+							<a href="EventServlet?event_number=<%=p.getEvent_number()%>"> <img src="<%=p.getEvent_img()%>" class="pagination-img"> </a>
 						</div>
 					</div>
 					<%
 					}
 					%>
 				
-				</div>
 			</div>
+		</div>
 		<br>
 		
 
 		<button id="pagination-before" name="pagination-before"
 			onclick="pageBefore()">이전</button>
-				
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
-			<button id="pagination-next" name="pagination-next"
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		<button id="pagination-next" name="pagination-next"
 			onclick="pageNext()">다음</button>
 		</table>
 	</div>
 	<%
-		String loginError = (String) request.getAttribute("loginError");
-		if (loginError != null) {
-			%>
-			<script>
-				loginFail();
-			</script>
-			<%
-		}
+	String loginError = (String) request.getAttribute("loginError");
+	if (loginError != null) {
+	%>
+	<script>
+		loginFail();
+	</script>
+	<%
+	}
 	%>
 	<script>
 

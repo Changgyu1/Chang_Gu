@@ -88,6 +88,30 @@ public class EventPostingDAO {
 		return eventPosting;
 	}
 	
+	public int updateEvent(int event_number, String event_name, String event_location, String event_day,
+			String event_time, double event_price, int event_age, Part event_imgs, String event_explain) throws IOException {
+		String sql = "UPDATE EVENT SET event_name = ?, event_location = ?, event_day = ?, event_time= ?, event_price = ?, event_age = ?, event_img = ?, event_explain = ? WHERE event_number = ?";
+		Connection conn;
+		try {
+			conn = DriverManager.getConnection(jdbcURL, username, password);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, event_name);
+			ps.setString(2, event_location);
+			ps.setString(3, event_day);
+			ps.setString(4, event_time);
+			ps.setDouble(5, event_price);
+			ps.setInt(6, event_age);
+			ps.setBinaryStream(7, event_imgs.getInputStream(), (int) event_imgs.getSize());
+			ps.setString(8, event_explain);
+			ps.setInt(9, event_number);
+			return ps.executeUpdate();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return -1; // DB 오류
+	}
+	
 	public EventPosting getEventInfo(int event_number) {
 		EventPosting eventPosting = null;
 
@@ -123,6 +147,8 @@ public class EventPostingDAO {
 		}
 		return eventPosting;
 	}
+	
+	
 
 	public int delete(int event_number) {
 		String sqlEvent = "DELETE EVENT WHERE event_number = ?";
@@ -145,28 +171,7 @@ public class EventPostingDAO {
 		return -1; // DB 오류
 	}
 
-	public int updateEvent(int event_number, String event_name, String event_location, String event_day,
-			String event_time, double event_price, int event_age, String event_explain) {
-		String sql = "UPDATE EVENT SET event_name = ?, event_location = ?, event_day = ?, event_time= ?, event_price = ?, event_age = ?, event_explain = ? WHERE event_number = ?";
-		Connection conn;
-		try {
-			conn = DriverManager.getConnection(jdbcURL, username, password);
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, event_name);
-			ps.setString(2, event_location);
-			ps.setString(3, event_day);
-			ps.setString(4, event_time);
-			ps.setDouble(5, event_price);
-			ps.setInt(6, event_age);
-			ps.setString(7, event_explain);
-			ps.setInt(8, event_number);
-			return ps.executeUpdate();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		return -1; // DB 오류
-	}
+
 
 	public List<EventPosting> getAllProducts(int pageNumber, int pageSize) {
 		List<EventPosting> EventPaginationList = new ArrayList<>();
@@ -176,7 +181,7 @@ public class EventPostingDAO {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			Connection conn = DriverManager.getConnection(jdbcURL, username, password);
-			String sql = "SELECT * FROM (SELECT e.*, ROWNUM AS rnum FROM (SELECT * FROM event ORDER BY event_number) e WHERE ROWNUM <= ?) WHERE rnum >= ?";
+			String sql = "SELECT * FROM (SELECT e.*, ROWNUM AS rnum FROM (SELECT * FROM event ORDER BY event_number DESC) e WHERE ROWNUM <= ?) WHERE rnum >= ?";
 			/*
 			 * String sql = "SELCT * FROM products " //products 테이블에서 +
 			 * "ORDER BY product_id " //product_id 기준으로 정렬할 것 임 // 지정된 OFFSET FETCH NEXT페이지를

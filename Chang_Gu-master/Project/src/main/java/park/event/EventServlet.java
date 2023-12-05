@@ -69,7 +69,30 @@ public class EventServlet extends HttpServlet {
 			response.sendRedirect("Event_add_success.jsp");
 		}
 	}
+	public void EventUpdate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
+		int event_number = Integer.parseInt(request.getParameter("event_number"));
+		String event_name = request.getParameter("event_name");
+		String event_location = request.getParameter("event_location");
+		String event_day = request.getParameter("event_day");
+		String event_time = request.getParameter("event_time");
+		double event_price = Double.parseDouble(request.getParameter("event_price"));
+		int event_age = Integer.parseInt(request.getParameter("event_age"));
+		Part event_imgs = request.getPart("event_img");
+		String event_explain = request.getParameter("event_explain");
+		EventPostingDAO dao = new EventPostingDAO();
+		int result = dao.updateEvent(event_number, event_name, event_location, event_day, event_time, event_price,
+				event_age, event_imgs, event_explain);
+
+		if (result == -1) {
+
+			response.sendRedirect("Event_Update_error.jsp");
+		} else {
+
+			response.sendRedirect("Event_Update_success.jsp");
+		}
+	}
 	// 행사 삭제 메서드
 	public void EventDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -85,29 +108,7 @@ public class EventServlet extends HttpServlet {
 		}
 	}
 	// 행사 정보 수정 메서드
-	public void EventUpdate(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 
-		int event_number = Integer.parseInt(request.getParameter("event_number"));
-		String event_name = request.getParameter("event_name");
-		String event_location = request.getParameter("event_location");
-		String event_day = request.getParameter("event_day");
-		String event_time = request.getParameter("event_time");
-		double event_price = Double.parseDouble(request.getParameter("event_price"));
-		int event_age = Integer.parseInt(request.getParameter("event_age"));
-		String event_explain = request.getParameter("event_explain");
-		EventPostingDAO dao = new EventPostingDAO();
-		int result = dao.updateEvent(event_number, event_name, event_location, event_day, event_time, event_price,
-				event_age, event_explain);
-
-		if (result == -1) {
-
-			response.sendRedirect("Event_Update_error.jsp");
-		} else {
-
-			response.sendRedirect("Event_Update_success.jsp");
-		}
-	}
 	// 행사 정보 데이터 가져오는 메서드(이미지 X)
 	public void EventInfoValue(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

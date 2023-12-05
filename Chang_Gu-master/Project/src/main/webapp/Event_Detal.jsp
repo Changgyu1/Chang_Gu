@@ -94,6 +94,39 @@ td, th {
 
 </head>
 
+<script>
+var testString = "<%=session.getAttribute("event_day") %>";
+var number = /[^0-9]/g;
+var result = testString.replace(number, "");
+
+var result3 = result.substr(8);
+
+
+const date = new Date();
+
+const year = date.getFullYear();
+const month = ('0' + (date.getMonth() + 1)).slice(-2);
+const day = ('0' + date.getDate()).slice(-2);
+const dateStr = year + month +  day;
+
+const num1 = parseInt(dateStr);
+const num2 = parseInt(result3);
+console.log(num1);
+console.log(num2);
+
+const target = document.getElementById('target');
+
+function limit(){
+	if(num1 > num2){
+		alert('에약날짜가 지났습니다')
+		return false;
+	} else{
+		location.href = 'reservation.jsp?event_number=<%=request.getParameter("event_number")%>'
+		return true;
+	}
+}
+</script>
+
 <body>
 	<div class="Event_Detail_Div">
 		<!-- 로고 이미지 -->
@@ -159,7 +192,7 @@ td, th {
 				<div class="buttontype">
 					<div class="buttonLeft">
 						<div>
-							<input type="button" class="reserButton" value="예약하기" onclick="location.href='reservation.jsp?event_number=<%=request.getParameter("event_number")%>'">
+							<input type="button" class="reserButton" name="target" value="예약하기" onclick="return limit()">
 					
 						    <input type="submit" class="reserButton" value="후기보기" onclick="location.href='review_searchlist.jsp?event_number=<%=request.getParameter("event_number")%>'">
 									    

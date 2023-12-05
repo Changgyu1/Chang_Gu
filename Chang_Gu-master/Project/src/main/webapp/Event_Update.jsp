@@ -83,7 +83,7 @@
 	<h3 style="text-align:center;">행사글 작성 <%=session.getAttribute("event_number")%></h3>
 	<div id="whitebox">
 	
-<form method="post" action="EventServlet">
+<form method="post" action="EventServlet" enctype="multipart/form-data" >
 	<div class="event_form">
 	<label for="event_name">행사 제목 : </label>
 	
@@ -104,12 +104,14 @@
 	<input type="number" id="event_price" name="event_price" value="<%=session.getAttribute("event_price") %>"  style="text-align:center;">
 	
 	<label for="event_age">연 령 : </label>
-	<input type="number" id="event_age" name="event_age" value="<%=session.getAttribute("event_age")%>"  style="text-align:center;"><br>
+	<input type="number" id="event_age" name="event_age" value="<%=session.getAttribute("event_age")%>"  oninput='handleOnInput(this, 2)' style="text-align:center;"><br>
 
 	
 	<label for="event_explain">내용 : </label> <br>
 	<input type="text" id="event_explain" name="event_explain" value="<%=session.getAttribute("event_explain")%>" style="text-align:center"> </textarea><br>
 	
+	<label for="event_img">사 진 : </label>
+	<input type="file" id="event_img" multiple="multiple" name="event_img"  style="text-align:center;"><br>	
 	
 	<input type="hidden" name="event_number" value="<%=session.getAttribute("event_number")%>">
 	
@@ -123,6 +125,15 @@
 	</div>
 </div>
 
+
+<script>
+function handleOnInput(el, maxlength) {
+	  if(el.value.length > maxlength)  {
+	    el.value 
+	      = el.value.substr(0, maxlength);
+	  }
+	}
+</script>
 </body>
 </html>
 	
